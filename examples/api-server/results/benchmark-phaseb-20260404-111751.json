@@ -1,0 +1,440 @@
+{
+  "mode": "full",
+  "generated_at": "2026-04-04T11:17:59",
+  "results": [
+    {
+      "runtime": "dgm",
+      "port": 46743,
+      "peak_rss_mb": 40.57,
+      "final_rss_mb": 37.08,
+      "avg_cpu_pct": 268.17,
+      "peak_cpu_pct": 368.7,
+      "scenarios": [
+        {
+          "name": "GET /users",
+          "requests": 1200,
+          "successes": 1200,
+          "errors": 0,
+          "requests_per_sec": 521.09,
+          "latency_ms": {
+            "avg": 60.09,
+            "p50": 57.63,
+            "p95": 97.98,
+            "p99": 130.41,
+            "max": 168.13
+          }
+        },
+        {
+          "name": "GET /users/:id",
+          "requests": 1200,
+          "successes": 1200,
+          "errors": 0,
+          "requests_per_sec": 456.35,
+          "latency_ms": {
+            "avg": 67.94,
+            "p50": 63.61,
+            "p95": 119.64,
+            "p99": 179.33,
+            "max": 256.12
+          }
+        },
+        {
+          "name": "POST /users",
+          "requests": 300,
+          "successes": 300,
+          "errors": 0,
+          "requests_per_sec": 115.63,
+          "latency_ms": {
+            "avg": 101.79,
+            "p50": 91.7,
+            "p95": 189.97,
+            "p99": 282.3,
+            "max": 362.6
+          }
+        }
+      ],
+      "metrics": {
+        "async": {
+          "cancelled_jobs": 0,
+          "completed_jobs": 0,
+          "max_threads": 16,
+          "oldest_pending_ms": 0,
+          "pending_jobs": 0,
+          "possible_deadlock": false,
+          "retained_tasks": 0,
+          "running_jobs": 0,
+          "submitted_jobs": 0
+        },
+        "auth_failures": 0,
+        "enabled": false,
+        "errors": 0,
+        "latency_ms": {
+          "avg": 0.0,
+          "count": 0,
+          "max": 0,
+          "p50": 0,
+          "p95": 0,
+          "p99": 0
+        },
+        "profile": {
+          "alloc_by_label": {
+            "concurrency.restore.payload": {
+              "bytes": 64872,
+              "count": 2703
+            },
+            "http.request.json": {
+              "bytes": 39928,
+              "count": 302
+            },
+            "http.server.json_body": {
+              "bytes": 127720,
+              "count": 31
+            }
+          },
+          "alloc_bytes": 7317859,
+          "alloc_count": 190640,
+          "function_calls": {
+            "<lambda>": 5406,
+            "append_user": 302,
+            "auth_header": 2702,
+            "create_user": 302,
+            "db_file": 5706,
+            "ensure": 2702,
+            "get_user": 1200,
+            "has_key": 53321,
+            "http.request.json": 302,
+            "int": 43410,
+            "io.exists": 5404,
+            "json.append_to_array_file": 302,
+            "json.read_file_cached": 1502,
+            "json.read_file_wrapped_raw_cached": 1200,
+            "keys": 1200,
+            "list_users_response_json": 1200,
+            "load_users_view": 1502,
+            "lower": 302,
+            "map_get": 47917,
+            "next_id": 302,
+            "ok": 2703,
+            "ok_json_raw": 1200,
+            "path.safe_join": 5706,
+            "record": 2703,
+            "sanitize_email": 302,
+            "sanitize_name": 302,
+            "str": 46716,
+            "time.now_ms": 5406,
+            "trim": 604,
+            "type": 1804,
+            "with_json_header": 1200
+          },
+          "function_time": {
+            "<lambda>": 81821361754,
+            "append_user": 723280942,
+            "auth_header": 1121206191,
+            "create_user": 21414990614,
+            "db_file": 1668028945,
+            "ensure": 3600191899,
+            "get_user": 3662384284,
+            "has_key": 757674019,
+            "http.request.json": 99830631,
+            "int": 437011890,
+            "io.exists": 1658792392,
+            "json.append_to_array_file": 636002084,
+            "json.read_file_cached": 1069197593,
+            "json.read_file_wrapped_raw_cached": 260683681,
+            "keys": 60140464,
+            "list_users_response_json": 2549725268,
+            "load_users_view": 4221119040,
+            "lower": 823114,
+            "map_get": 10681444363,
+            "next_id": 18603094061,
+            "ok": 410486007,
+            "ok_json_raw": 735182008,
+            "path.safe_join": 492870829,
+            "record": 440669962,
+            "sanitize_email": 105241690,
+            "sanitize_name": 118406065,
+            "str": 912116491,
+            "time.now_ms": 163252490,
+            "trim": 2337194,
+            "type": 28164975,
+            "with_json_header": 298415995
+          },
+          "io_call_count": 0,
+          "io_time": 0,
+          "io_time_ms": 0.0,
+          "module_time": {},
+          "peak_heap_bytes": 24732,
+          "total_time": 81920653222,
+          "total_time_ms": 81920.653222,
+          "vm_alloc_bytes": 24699858,
+          "vm_alloc_count": 687645,
+          "vm_avg_alloc_bytes_per_frame": 318.08808643803684,
+          "vm_frame_count": 77651,
+          "vm_instruction_count": 785746,
+          "vm_time": 130895806861,
+          "vm_time_ms": 130895.806861
+        },
+        "request_profile": {
+          "alloc_by_label": {
+            "concurrency.restore.payload": {
+              "bytes": 24,
+              "count": 1
+            }
+          },
+          "alloc_bytes": 390,
+          "alloc_count": 3,
+          "function_calls": {
+            "<lambda>": 2,
+            "http.stats": 1,
+            "runtime.profile": 1,
+            "runtime.request_metrics": 1,
+            "runtime.stats": 1,
+            "snapshot": 1,
+            "time.now_ms": 1
+          },
+          "function_time": {
+            "<lambda>": 1040290,
+            "http.stats": 116977,
+            "runtime.profile": 9171,
+            "runtime.request_metrics": 27872,
+            "runtime.stats": 250316,
+            "snapshot": 468189,
+            "time.now_ms": 10072
+          },
+          "io_call_count": 0,
+          "io_time": 0,
+          "io_time_ms": 0.0,
+          "module_time": {},
+          "peak_heap_bytes": 390,
+          "total_time": 1728420,
+          "total_time_ms": 1.72842,
+          "vm_alloc_bytes": 0,
+          "vm_alloc_count": 0,
+          "vm_avg_alloc_bytes_per_frame": 0.0,
+          "vm_frame_count": 0,
+          "vm_instruction_count": 16,
+          "vm_time": 0,
+          "vm_time_ms": 0.0
+        },
+        "requests": 0,
+        "routes": {},
+        "runtime": {
+          "allocator": {
+            "arena_bytes": 17498112,
+            "free_bytes": 9763888,
+            "free_chunks": 2776,
+            "in_use_bytes": 7734224,
+            "mmap_bytes": 0,
+            "releasable_bytes": 1856,
+            "supported": true
+          },
+          "call_depth": 3,
+          "concurrent_requests": 0,
+          "elapsed_wall_time_ms": 1,
+          "environments": {
+            "created": 267163,
+            "dropped": 267138,
+            "live": 25,
+            "pooled_capacity": 3737,
+            "pooled_maps": 308
+          },
+          "live_objects": {
+            "json_views": {
+              "created": 47312,
+              "dropped": 47312,
+              "live": 0,
+              "live_bytes": 0
+            },
+            "raw_json": {
+              "created": 19,
+              "dropped": 19,
+              "live": 0,
+              "live_bytes": 0
+            },
+            "request_json": {
+              "created": 302,
+              "dropped": 302,
+              "live": 0,
+              "live_bytes": 0
+            },
+            "request_maps": {
+              "created": 0,
+              "dropped": 0,
+              "live": 0,
+              "live_bytes": 0
+            },
+            "requests": {
+              "created": 2704,
+              "dropped": 2703,
+              "live": 1,
+              "live_bytes": 171
+            }
+          },
+          "max_call_depth": 1000,
+          "max_concurrent_requests": 16,
+          "max_heap_bytes": 67108864,
+          "max_open_sockets": 64,
+          "max_steps": 10000000,
+          "max_threads": 16,
+          "max_wall_time_ms": 400000,
+          "open_sockets": 0,
+          "peak_concurrent_requests": 0,
+          "peak_heap_bytes": 24,
+          "process_memory": {
+            "rss_bytes": 38662144,
+            "virtual_bytes": 255193088
+          },
+          "request_scope": {
+            "completed": 2703,
+            "last_survivors": {
+              "environments": 0,
+              "json_views": 0,
+              "raw_json": 0,
+              "request_json": 0,
+              "request_maps": 0,
+              "requests": 0
+            },
+            "scopes_with_assertable_survivors": 0,
+            "scopes_with_report_only_survivors": 0,
+            "scopes_with_survivors": 0,
+            "started": 2704,
+            "total_survivors": {
+              "environments": 0,
+              "json_views": 0,
+              "raw_json": 0,
+              "request_json": 0,
+              "request_maps": 0,
+              "requests": 0
+            }
+          },
+          "steps": 33,
+          "used_heap_bytes": 24
+        },
+        "server": {
+          "active_threads": 1,
+          "completed_jobs": 2703,
+          "idle_threads": 15,
+          "idle_trim_calls": 13,
+          "last_trim_elapsed_ms": 7593,
+          "manual_trim_calls": 0,
+          "max_threads": 16,
+          "pending_jobs": 0,
+          "periodic_trim_calls": 42,
+          "profile": {
+            "alloc_by_label": {
+              "concurrency.restore.payload": {
+                "bytes": 64872,
+                "count": 2703
+              },
+              "http.request.json": {
+                "bytes": 39928,
+                "count": 302
+              },
+              "http.server.json_body": {
+                "bytes": 127720,
+                "count": 31
+              }
+            },
+            "alloc_bytes": 7317859,
+            "alloc_count": 190640,
+            "function_calls": {
+              "<lambda>": 5406,
+              "append_user": 302,
+              "auth_header": 2702,
+              "create_user": 302,
+              "db_file": 5706,
+              "ensure": 2702,
+              "get_user": 1200,
+              "has_key": 53321,
+              "http.request.json": 302,
+              "int": 43410,
+              "io.exists": 5404,
+              "json.append_to_array_file": 302,
+              "json.read_file_cached": 1502,
+              "json.read_file_wrapped_raw_cached": 1200,
+              "keys": 1200,
+              "list_users_response_json": 1200,
+              "load_users_view": 1502,
+              "lower": 302,
+              "map_get": 47917,
+              "next_id": 302,
+              "ok": 2703,
+              "ok_json_raw": 1200,
+              "path.safe_join": 5706,
+              "record": 2703,
+              "sanitize_email": 302,
+              "sanitize_name": 302,
+              "str": 46716,
+              "time.now_ms": 5406,
+              "trim": 604,
+              "type": 1804,
+              "with_json_header": 1200
+            },
+            "function_time": {
+              "<lambda>": 81821361754,
+              "append_user": 723280942,
+              "auth_header": 1121206191,
+              "create_user": 21414990614,
+              "db_file": 1668028945,
+              "ensure": 3600191899,
+              "get_user": 3662384284,
+              "has_key": 757674019,
+              "http.request.json": 99830631,
+              "int": 437011890,
+              "io.exists": 1658792392,
+              "json.append_to_array_file": 636002084,
+              "json.read_file_cached": 1069197593,
+              "json.read_file_wrapped_raw_cached": 260683681,
+              "keys": 60140464,
+              "list_users_response_json": 2549725268,
+              "load_users_view": 4221119040,
+              "lower": 823114,
+              "map_get": 10681444363,
+              "next_id": 18603094061,
+              "ok": 410486007,
+              "ok_json_raw": 735182008,
+              "path.safe_join": 492870829,
+              "record": 440669962,
+              "sanitize_email": 105241690,
+              "sanitize_name": 118406065,
+              "str": 912116491,
+              "time.now_ms": 163252490,
+              "trim": 2337194,
+              "type": 28164975,
+              "with_json_header": 298415995
+            },
+            "io_call_count": 0,
+            "io_time": 0,
+            "io_time_ms": 0.0,
+            "module_time": {},
+            "peak_heap_bytes": 24732,
+            "total_time": 81920653222,
+            "total_time_ms": 81920.653222,
+            "vm_alloc_bytes": 24699858,
+            "vm_alloc_count": 687645,
+            "vm_avg_alloc_bytes_per_frame": 318.08808643803684,
+            "vm_frame_count": 77651,
+            "vm_instruction_count": 785746,
+            "vm_time": 130895806861,
+            "vm_time_ms": 130895.806861
+          },
+          "rejected_jobs": 0,
+          "submitted_jobs": 2704,
+          "trim_calls": 55,
+          "trim_failures": 0,
+          "trim_successes": 55,
+          "trim_supported": true
+        },
+        "snapshot": {
+          "env_snapshot_bytes_estimate": 104127,
+          "env_snapshot_count": 57,
+          "payload_snapshot_count": 0,
+          "prepared_call_count": 0,
+          "prepared_callable_count": 6,
+          "value_snapshot_bytes_estimate": 1460986,
+          "value_snapshot_count": 5022
+        }
+      }
+    }
+  ]
+}

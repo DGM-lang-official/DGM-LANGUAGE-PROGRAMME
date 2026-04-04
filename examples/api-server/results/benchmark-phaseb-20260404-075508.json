@@ -1,0 +1,558 @@
+{
+  "mode": "full",
+  "generated_at": "2026-04-04T07:55:50",
+  "results": [
+    {
+      "runtime": "dgm",
+      "port": 38511,
+      "peak_rss_mb": 41.67,
+      "final_rss_mb": 37.41,
+      "avg_cpu_pct": 240.3,
+      "peak_cpu_pct": 345.61,
+      "scenarios": [
+        {
+          "name": "GET /users",
+          "requests": 1200,
+          "successes": 1200,
+          "errors": 0,
+          "requests_per_sec": 361.67,
+          "latency_ms": {
+            "avg": 85.98,
+            "p50": 72.76,
+            "p95": 165.02,
+            "p99": 338.16,
+            "max": 459.84
+          }
+        },
+        {
+          "name": "GET /users/:id",
+          "requests": 1200,
+          "successes": 1200,
+          "errors": 0,
+          "requests_per_sec": 536.93,
+          "latency_ms": {
+            "avg": 58.03,
+            "p50": 56.15,
+            "p95": 90.24,
+            "p99": 103.55,
+            "max": 135.84
+          }
+        },
+        {
+          "name": "POST /users",
+          "requests": 300,
+          "successes": 300,
+          "errors": 0,
+          "requests_per_sec": 102.96,
+          "latency_ms": {
+            "avg": 114.68,
+            "p50": 104.72,
+            "p95": 232.2,
+            "p99": 285.03,
+            "max": 322.0
+          }
+        }
+      ],
+      "metrics": {
+        "async": {
+          "cancelled_jobs": 0,
+          "completed_jobs": 0,
+          "max_threads": 16,
+          "oldest_pending_ms": 0,
+          "pending_jobs": 0,
+          "possible_deadlock": false,
+          "retained_tasks": 0,
+          "running_jobs": 0,
+          "submitted_jobs": 0
+        },
+        "auth_failures": 0,
+        "enabled": false,
+        "errors": 0,
+        "latency_ms": {
+          "avg": 0.0,
+          "count": 0,
+          "max": 0,
+          "p50": 0,
+          "p95": 0,
+          "p99": 0
+        },
+        "profile": {
+          "alloc_by_label": {
+            "concurrency.restore.payload": {
+              "bytes": 396654,
+              "count": 2703
+            },
+            "http.request.json": {
+              "bytes": 39928,
+              "count": 302
+            },
+            "http.server.json_body": {
+              "bytes": 143720,
+              "count": 1503
+            },
+            "json.raw_parts": {
+              "bytes": 129600,
+              "count": 1200
+            }
+          },
+          "alloc_bytes": 7796068,
+          "alloc_count": 193321,
+          "function_calls": {
+            "<lambda>": 5406,
+            "append_user": 302,
+            "auth_header": 2702,
+            "create_user": 302,
+            "db_file": 5706,
+            "ensure": 2702,
+            "get_user": 1200,
+            "has_key": 53324,
+            "http.request.json": 302,
+            "int": 43413,
+            "io.exists": 5404,
+            "json.append_to_array_file": 302,
+            "json.raw_parts": 1200,
+            "json.read_file_cached": 1502,
+            "json.read_file_raw_cached": 1200,
+            "keys": 1200,
+            "list_users_response_json": 1200,
+            "load_users_view": 1502,
+            "lower": 302,
+            "map_get": 47920,
+            "next_id": 302,
+            "ok": 2703,
+            "ok_json_raw": 1200,
+            "path.safe_join": 5706,
+            "record": 2703,
+            "sanitize_email": 302,
+            "sanitize_name": 302,
+            "str": 46719,
+            "time.now_ms": 5406,
+            "trim": 604,
+            "type": 1804,
+            "with_json_header": 1200
+          },
+          "function_time": {
+            "<lambda>": 91589791022,
+            "append_user": 884893506,
+            "auth_header": 1281672339,
+            "create_user": 24562011310,
+            "db_file": 1332303533,
+            "ensure": 3700250911,
+            "get_user": 3424224756,
+            "has_key": 946044243,
+            "http.request.json": 186166907,
+            "int": 476708671,
+            "io.exists": 1763731669,
+            "json.append_to_array_file": 818493966,
+            "json.raw_parts": 96144939,
+            "json.read_file_cached": 1662551960,
+            "json.read_file_raw_cached": 211343566,
+            "keys": 88303873,
+            "list_users_response_json": 3123387301,
+            "load_users_view": 4437094984,
+            "lower": 10738077,
+            "map_get": 11436443236,
+            "next_id": 21150392073,
+            "ok": 488777833,
+            "ok_json_raw": 1139215290,
+            "path.safe_join": 288454517,
+            "record": 462425085,
+            "sanitize_email": 108047460,
+            "sanitize_name": 116606058,
+            "str": 914494857,
+            "time.now_ms": 139820408,
+            "trim": 16268720,
+            "type": 96017914,
+            "with_json_header": 415354236
+          },
+          "io_call_count": 0,
+          "io_time": 0,
+          "io_time_ms": 0.0,
+          "module_time": {},
+          "peak_heap_bytes": 24981,
+          "total_time": 91689592683,
+          "total_time_ms": 91689.592683,
+          "vm_alloc_bytes": 25091966,
+          "vm_alloc_count": 691281,
+          "vm_avg_alloc_bytes_per_frame": 323.125222139233,
+          "vm_frame_count": 77654,
+          "vm_instruction_count": 785785,
+          "vm_time": 146424434833,
+          "vm_time_ms": 146424.434833
+        },
+        "request_profile": {
+          "alloc_by_label": {
+            "concurrency.restore.payload": {
+              "bytes": 135,
+              "count": 1
+            }
+          },
+          "alloc_bytes": 501,
+          "alloc_count": 3,
+          "function_calls": {
+            "<lambda>": 2,
+            "http.stats": 1,
+            "runtime.profile": 1,
+            "runtime.request_metrics": 1,
+            "runtime.stats": 1,
+            "snapshot": 1,
+            "time.now_ms": 1
+          },
+          "function_time": {
+            "<lambda>": 1501623,
+            "http.stats": 127299,
+            "runtime.profile": 11051,
+            "runtime.request_metrics": 44212,
+            "runtime.stats": 423049,
+            "snapshot": 676118,
+            "time.now_ms": 13387
+          },
+          "io_call_count": 0,
+          "io_time": 0,
+          "io_time_ms": 0.0,
+          "module_time": {},
+          "peak_heap_bytes": 501,
+          "total_time": 2218734,
+          "total_time_ms": 2.218734,
+          "vm_alloc_bytes": 0,
+          "vm_alloc_count": 0,
+          "vm_avg_alloc_bytes_per_frame": 0.0,
+          "vm_frame_count": 0,
+          "vm_instruction_count": 16,
+          "vm_time": 0,
+          "vm_time_ms": 0.0
+        },
+        "requests": 0,
+        "routes": {},
+        "runtime": {
+          "allocator": {
+            "arena_bytes": 18489344,
+            "free_bytes": 9597760,
+            "free_chunks": 2518,
+            "in_use_bytes": 8891584,
+            "mmap_bytes": 0,
+            "releasable_bytes": 2176,
+            "supported": true
+          },
+          "call_depth": 3,
+          "concurrent_requests": 0,
+          "elapsed_wall_time_ms": 1,
+          "environments": {
+            "created": 268284,
+            "dropped": 268259,
+            "live": 25,
+            "pooled_capacity": 3968,
+            "pooled_maps": 308
+          },
+          "live_objects": {
+            "json_views": {
+              "created": 47315,
+              "dropped": 47315,
+              "live": 0,
+              "live_bytes": 0
+            },
+            "raw_json": {
+              "created": 2400,
+              "dropped": 2400,
+              "live": 0,
+              "live_bytes": 0
+            },
+            "request_json": {
+              "created": 2704,
+              "dropped": 2703,
+              "live": 1,
+              "live_bytes": 144
+            },
+            "request_maps": {
+              "created": 8112,
+              "dropped": 8109,
+              "live": 3,
+              "live_bytes": 644
+            },
+            "requests": {
+              "created": 2704,
+              "dropped": 2703,
+              "live": 1,
+              "live_bytes": 147
+            }
+          },
+          "max_call_depth": 1000,
+          "max_concurrent_requests": 16,
+          "max_heap_bytes": 67108864,
+          "max_open_sockets": 64,
+          "max_steps": 10000000,
+          "max_threads": 16,
+          "max_wall_time_ms": 400000,
+          "open_sockets": 0,
+          "peak_concurrent_requests": 0,
+          "peak_heap_bytes": 135,
+          "process_memory": {
+            "rss_bytes": 39096320,
+            "virtual_bytes": 255619072
+          },
+          "request_scope": {
+            "completed": 2703,
+            "last_survivors": {
+              "environments": 0,
+              "json_views": 0,
+              "raw_json": 0,
+              "request_json": 0,
+              "request_maps": 0,
+              "requests": 0
+            },
+            "scopes_with_assertable_survivors": 0,
+            "scopes_with_report_only_survivors": 0,
+            "scopes_with_survivors": 0,
+            "started": 2704,
+            "total_survivors": {
+              "environments": 0,
+              "json_views": 0,
+              "raw_json": 0,
+              "request_json": 0,
+              "request_maps": 0,
+              "requests": 0
+            }
+          },
+          "steps": 33,
+          "used_heap_bytes": 135
+        },
+        "server": {
+          "active_threads": 1,
+          "completed_jobs": 2703,
+          "idle_threads": 15,
+          "idle_trim_calls": 15,
+          "last_trim_elapsed_ms": 8548,
+          "manual_trim_calls": 0,
+          "max_threads": 16,
+          "pending_jobs": 0,
+          "periodic_trim_calls": 41,
+          "profile": {
+            "alloc_by_label": {
+              "concurrency.restore.payload": {
+                "bytes": 396654,
+                "count": 2703
+              },
+              "http.request.json": {
+                "bytes": 39928,
+                "count": 302
+              },
+              "http.server.json_body": {
+                "bytes": 143720,
+                "count": 1503
+              },
+              "json.raw_parts": {
+                "bytes": 129600,
+                "count": 1200
+              }
+            },
+            "alloc_bytes": 7796068,
+            "alloc_count": 193321,
+            "function_calls": {
+              "<lambda>": 5406,
+              "append_user": 302,
+              "auth_header": 2702,
+              "create_user": 302,
+              "db_file": 5706,
+              "ensure": 2702,
+              "get_user": 1200,
+              "has_key": 53324,
+              "http.request.json": 302,
+              "int": 43413,
+              "io.exists": 5404,
+              "json.append_to_array_file": 302,
+              "json.raw_parts": 1200,
+              "json.read_file_cached": 1502,
+              "json.read_file_raw_cached": 1200,
+              "keys": 1200,
+              "list_users_response_json": 1200,
+              "load_users_view": 1502,
+              "lower": 302,
+              "map_get": 47920,
+              "next_id": 302,
+              "ok": 2703,
+              "ok_json_raw": 1200,
+              "path.safe_join": 5706,
+              "record": 2703,
+              "sanitize_email": 302,
+              "sanitize_name": 302,
+              "str": 46719,
+              "time.now_ms": 5406,
+              "trim": 604,
+              "type": 1804,
+              "with_json_header": 1200
+            },
+            "function_time": {
+              "<lambda>": 91589791022,
+              "append_user": 884893506,
+              "auth_header": 1281672339,
+              "create_user": 24562011310,
+              "db_file": 1332303533,
+              "ensure": 3700250911,
+              "get_user": 3424224756,
+              "has_key": 946044243,
+              "http.request.json": 186166907,
+              "int": 476708671,
+              "io.exists": 1763731669,
+              "json.append_to_array_file": 818493966,
+              "json.raw_parts": 96144939,
+              "json.read_file_cached": 1662551960,
+              "json.read_file_raw_cached": 211343566,
+              "keys": 88303873,
+              "list_users_response_json": 3123387301,
+              "load_users_view": 4437094984,
+              "lower": 10738077,
+              "map_get": 11436443236,
+              "next_id": 21150392073,
+              "ok": 488777833,
+              "ok_json_raw": 1139215290,
+              "path.safe_join": 288454517,
+              "record": 462425085,
+              "sanitize_email": 108047460,
+              "sanitize_name": 116606058,
+              "str": 914494857,
+              "time.now_ms": 139820408,
+              "trim": 16268720,
+              "type": 96017914,
+              "with_json_header": 415354236
+            },
+            "io_call_count": 0,
+            "io_time": 0,
+            "io_time_ms": 0.0,
+            "module_time": {},
+            "peak_heap_bytes": 24981,
+            "total_time": 91689592683,
+            "total_time_ms": 91689.592683,
+            "vm_alloc_bytes": 25091966,
+            "vm_alloc_count": 691281,
+            "vm_avg_alloc_bytes_per_frame": 323.125222139233,
+            "vm_frame_count": 77654,
+            "vm_instruction_count": 785785,
+            "vm_time": 146424434833,
+            "vm_time_ms": 146424.434833
+          },
+          "rejected_jobs": 0,
+          "submitted_jobs": 2704,
+          "trim_calls": 56,
+          "trim_failures": 0,
+          "trim_successes": 56,
+          "trim_supported": true
+        },
+        "snapshot": {
+          "env_snapshot_bytes_estimate": 231807,
+          "env_snapshot_count": 57,
+          "payload_snapshot_count": 0,
+          "prepared_call_count": 0,
+          "prepared_callable_count": 6,
+          "value_snapshot_bytes_estimate": 2604412,
+          "value_snapshot_count": 4974
+        }
+      }
+    },
+    {
+      "runtime": "node",
+      "port": 49761,
+      "peak_rss_mb": 67.53,
+      "final_rss_mb": 66.53,
+      "avg_cpu_pct": 87.71,
+      "peak_cpu_pct": 128.64,
+      "scenarios": [
+        {
+          "name": "GET /users",
+          "requests": 1200,
+          "successes": 1200,
+          "errors": 0,
+          "requests_per_sec": 1292.08,
+          "latency_ms": {
+            "avg": 23.68,
+            "p50": 22.39,
+            "p95": 38.98,
+            "p99": 51.13,
+            "max": 70.04
+          }
+        },
+        {
+          "name": "GET /users/:id",
+          "requests": 1200,
+          "successes": 1200,
+          "errors": 0,
+          "requests_per_sec": 1385.98,
+          "latency_ms": {
+            "avg": 21.61,
+            "p50": 20.04,
+            "p95": 41.1,
+            "p99": 49.99,
+            "max": 94.57
+          }
+        },
+        {
+          "name": "POST /users",
+          "requests": 300,
+          "successes": 300,
+          "errors": 0,
+          "requests_per_sec": 954.24,
+          "latency_ms": {
+            "avg": 11.92,
+            "p50": 11.77,
+            "p95": 15.07,
+            "p99": 17.35,
+            "max": 17.92
+          }
+        }
+      ],
+      "metrics": null
+    },
+    {
+      "runtime": "python",
+      "port": 36901,
+      "peak_rss_mb": 23.58,
+      "final_rss_mb": 23.52,
+      "avg_cpu_pct": 18.57,
+      "peak_cpu_pct": 129.58,
+      "scenarios": [
+        {
+          "name": "GET /users",
+          "requests": 1200,
+          "successes": 1200,
+          "errors": 0,
+          "requests_per_sec": 574.07,
+          "latency_ms": {
+            "avg": 32.85,
+            "p50": 4.98,
+            "p95": 9.58,
+            "p99": 1055.69,
+            "max": 2059.47
+          }
+        },
+        {
+          "name": "GET /users/:id",
+          "requests": 1200,
+          "successes": 1200,
+          "errors": 0,
+          "requests_per_sec": 648.35,
+          "latency_ms": {
+            "avg": 31.79,
+            "p50": 5.52,
+            "p95": 13.33,
+            "p99": 1056.07,
+            "max": 1476.9
+          }
+        },
+        {
+          "name": "POST /users",
+          "requests": 300,
+          "successes": 256,
+          "errors": 44,
+          "requests_per_sec": 28.96,
+          "latency_ms": {
+            "avg": 379.73,
+            "p50": 5.17,
+            "p95": 100.77,
+            "p99": 10010.55,
+            "max": 10010.88
+          }
+        }
+      ],
+      "metrics": null
+    }
+  ]
+}

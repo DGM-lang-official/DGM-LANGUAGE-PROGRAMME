@@ -1,0 +1,2055 @@
+{
+  "mode": "quick",
+  "generated_at": "2026-04-02T21:44:18",
+  "pid": 199267,
+  "peak_rss_mb": 2954.71,
+  "final_rss_mb": 3179.84,
+  "phases": [
+    {
+      "name": "baseline",
+      "requests": 320,
+      "successes": 320,
+      "errors": 0,
+      "latency_ms": {
+        "avg": 9.6,
+        "p50": 9.38,
+        "p95": 11.31,
+        "p99": 12.77,
+        "max": 16.51
+      }
+    },
+    {
+      "name": "stress",
+      "requests": 960,
+      "successes": 959,
+      "errors": 1,
+      "latency_ms": {
+        "avg": 24.55,
+        "p50": 16.02,
+        "p95": 67.86,
+        "p99": 106.48,
+        "max": 141.16
+      }
+    },
+    {
+      "name": "chaos",
+      "requests": 590,
+      "successes": 498,
+      "errors": 92,
+      "latency_ms": {
+        "avg": 15.86,
+        "p50": 13.28,
+        "p95": 29.08,
+        "p99": 34.44,
+        "max": 38.99
+      }
+    }
+  ],
+  "final_metrics": {
+    "async": {
+      "cancelled_jobs": 0,
+      "completed_jobs": 0,
+      "max_threads": 64,
+      "oldest_pending_ms": 0,
+      "pending_jobs": 0,
+      "possible_deadlock": false,
+      "retained_tasks": 0,
+      "running_jobs": 0,
+      "submitted_jobs": 0
+    },
+    "auth_failures": 92,
+    "enabled": true,
+    "errors": 93,
+    "latency_ms": {
+      "avg": 4.206038135593221,
+      "count": 1888,
+      "max": 106,
+      "p50": 2,
+      "p95": 16,
+      "p99": 40
+    },
+    "profile": {
+      "alloc_bytes": 183,
+      "alloc_count": 1,
+      "function_calls": {
+        "<lambda>": 2,
+        "runtime.profile": 1,
+        "runtime.request_metrics": 1,
+        "runtime.stats": 1,
+        "snapshot": 1,
+        "time.now_ms": 1
+      },
+      "function_time": {
+        "<lambda>": 5861804,
+        "runtime.profile": 14540,
+        "runtime.request_metrics": 2798437,
+        "runtime.stats": 17907,
+        "snapshot": 2873930,
+        "time.now_ms": 10701
+      },
+      "io_call_count": 0,
+      "io_time": 0,
+      "io_time_ms": 0.0,
+      "module_time": {},
+      "peak_heap_bytes": 183,
+      "total_time": 8530438,
+      "total_time_ms": 8.530438,
+      "vm_alloc_bytes": 0,
+      "vm_alloc_count": 0,
+      "vm_avg_alloc_bytes_per_frame": 0.0,
+      "vm_frame_count": 0,
+      "vm_instruction_count": 11,
+      "vm_time": 0,
+      "vm_time_ms": 0.0
+    },
+    "requests": 1888,
+    "routes": {
+      "health": {
+        "auth_failures": 0,
+        "errors": 0,
+        "last_status": 200,
+        "latency_ms": {
+          "avg": 0.0,
+          "count": 1,
+          "max": 0,
+          "p50": 0,
+          "p95": 0,
+          "p99": 0
+        },
+        "requests": 1
+      },
+      "metrics.show": {
+        "auth_failures": 0,
+        "errors": 0,
+        "last_status": 200,
+        "latency_ms": {
+          "avg": 2.5833333333333335,
+          "count": 12,
+          "max": 9,
+          "p50": 2,
+          "p95": 6,
+          "p99": 6
+        },
+        "requests": 12
+      },
+      "users.create": {
+        "auth_failures": 0,
+        "errors": 0,
+        "last_status": 201,
+        "latency_ms": {
+          "avg": 19.20812182741117,
+          "count": 197,
+          "max": 106,
+          "p50": 13,
+          "p95": 53,
+          "p99": 92
+        },
+        "requests": 197
+      },
+      "users.index": {
+        "auth_failures": 92,
+        "errors": 92,
+        "last_status": 401,
+        "latency_ms": {
+          "avg": 3.0390625,
+          "count": 512,
+          "max": 18,
+          "p50": 2,
+          "p95": 7,
+          "p99": 15
+        },
+        "requests": 1128
+      },
+      "users.show": {
+        "auth_failures": 0,
+        "errors": 1,
+        "last_status": 200,
+        "latency_ms": {
+          "avg": 3.279296875,
+          "count": 512,
+          "max": 22,
+          "p50": 3,
+          "p95": 8,
+          "p99": 16
+        },
+        "requests": 550
+      }
+    },
+    "runtime": {
+      "call_depth": 3,
+      "concurrent_requests": 0,
+      "elapsed_wall_time_ms": 8,
+      "max_call_depth": 1000,
+      "max_concurrent_requests": 16,
+      "max_heap_bytes": 67108864,
+      "max_open_sockets": 64,
+      "max_steps": 10000000,
+      "max_threads": 64,
+      "max_wall_time_ms": 400000,
+      "open_sockets": 0,
+      "peak_concurrent_requests": 0,
+      "peak_heap_bytes": 0,
+      "steps": 28,
+      "used_heap_bytes": 0
+    },
+    "snapshot": {
+      "env_snapshot_bytes_estimate": 80960,
+      "env_snapshot_count": 45,
+      "payload_snapshot_count": 1889,
+      "prepared_call_count": 0,
+      "prepared_callable_count": 5,
+      "value_snapshot_bytes_estimate": 5570752,
+      "value_snapshot_count": 34611
+    }
+  },
+  "samples": [
+    {
+      "time": 1775141034.3327546,
+      "rss_mb": 36.88,
+      "metrics": {
+        "async": {
+          "cancelled_jobs": 0,
+          "completed_jobs": 0,
+          "max_threads": 64,
+          "oldest_pending_ms": 0,
+          "pending_jobs": 0,
+          "possible_deadlock": false,
+          "retained_tasks": 0,
+          "running_jobs": 0,
+          "submitted_jobs": 0
+        },
+        "auth_failures": 0,
+        "enabled": true,
+        "errors": 0,
+        "latency_ms": {
+          "avg": 1.1666666666666667,
+          "count": 6,
+          "max": 2,
+          "p50": 1,
+          "p95": 2,
+          "p99": 2
+        },
+        "profile": {
+          "alloc_bytes": 183,
+          "alloc_count": 1,
+          "function_calls": {
+            "<lambda>": 2,
+            "runtime.profile": 1,
+            "runtime.request_metrics": 1,
+            "runtime.stats": 1,
+            "snapshot": 1,
+            "time.now_ms": 1
+          },
+          "function_time": {
+            "<lambda>": 631237,
+            "runtime.profile": 15367,
+            "runtime.request_metrics": 75391,
+            "runtime.stats": 21744,
+            "snapshot": 192190,
+            "time.now_ms": 11448
+          },
+          "io_call_count": 0,
+          "io_time": 0,
+          "io_time_ms": 0.0,
+          "module_time": {},
+          "peak_heap_bytes": 183,
+          "total_time": 8656629,
+          "total_time_ms": 8.656629,
+          "vm_alloc_bytes": 0,
+          "vm_alloc_count": 0,
+          "vm_avg_alloc_bytes_per_frame": 0.0,
+          "vm_frame_count": 0,
+          "vm_instruction_count": 11,
+          "vm_time": 0,
+          "vm_time_ms": 0.0
+        },
+        "requests": 6,
+        "routes": {
+          "health": {
+            "auth_failures": 0,
+            "errors": 0,
+            "last_status": 200,
+            "latency_ms": {
+              "avg": 0.0,
+              "count": 1,
+              "max": 0,
+              "p50": 0,
+              "p95": 0,
+              "p99": 0
+            },
+            "requests": 1
+          },
+          "users.create": {
+            "auth_failures": 0,
+            "errors": 0,
+            "last_status": 201,
+            "latency_ms": {
+              "avg": 1.4,
+              "count": 5,
+              "max": 2,
+              "p50": 1,
+              "p95": 2,
+              "p99": 2
+            },
+            "requests": 5
+          }
+        },
+        "runtime": {
+          "call_depth": 3,
+          "concurrent_requests": 0,
+          "elapsed_wall_time_ms": 8,
+          "max_call_depth": 1000,
+          "max_concurrent_requests": 16,
+          "max_heap_bytes": 67108864,
+          "max_open_sockets": 64,
+          "max_steps": 10000000,
+          "max_threads": 64,
+          "max_wall_time_ms": 400000,
+          "open_sockets": 0,
+          "peak_concurrent_requests": 0,
+          "peak_heap_bytes": 0,
+          "steps": 28,
+          "used_heap_bytes": 0
+        },
+        "snapshot": {
+          "env_snapshot_bytes_estimate": 80960,
+          "env_snapshot_count": 45,
+          "payload_snapshot_count": 8,
+          "prepared_call_count": 0,
+          "prepared_callable_count": 5,
+          "value_snapshot_bytes_estimate": 725978,
+          "value_snapshot_count": 3301
+        }
+      }
+    },
+    {
+      "time": 1775141036.341111,
+      "rss_mb": 187.68,
+      "metrics": {
+        "async": {
+          "cancelled_jobs": 0,
+          "completed_jobs": 0,
+          "max_threads": 64,
+          "oldest_pending_ms": 0,
+          "pending_jobs": 0,
+          "possible_deadlock": false,
+          "retained_tasks": 0,
+          "running_jobs": 0,
+          "submitted_jobs": 0
+        },
+        "auth_failures": 0,
+        "enabled": true,
+        "errors": 0,
+        "latency_ms": {
+          "avg": 0.8863636363636364,
+          "count": 88,
+          "max": 2,
+          "p50": 1,
+          "p95": 1,
+          "p99": 2
+        },
+        "profile": {
+          "alloc_bytes": 183,
+          "alloc_count": 1,
+          "function_calls": {
+            "<lambda>": 2,
+            "runtime.profile": 1,
+            "runtime.request_metrics": 1,
+            "runtime.stats": 1,
+            "snapshot": 1,
+            "time.now_ms": 1
+          },
+          "function_time": {
+            "<lambda>": 592985,
+            "runtime.profile": 8756,
+            "runtime.request_metrics": 171502,
+            "runtime.stats": 21419,
+            "snapshot": 243851,
+            "time.now_ms": 10220
+          },
+          "io_call_count": 0,
+          "io_time": 0,
+          "io_time_ms": 0.0,
+          "module_time": {},
+          "peak_heap_bytes": 183,
+          "total_time": 5821880,
+          "total_time_ms": 5.82188,
+          "vm_alloc_bytes": 0,
+          "vm_alloc_count": 0,
+          "vm_avg_alloc_bytes_per_frame": 0.0,
+          "vm_frame_count": 0,
+          "vm_instruction_count": 11,
+          "vm_time": 0,
+          "vm_time_ms": 0.0
+        },
+        "requests": 88,
+        "routes": {
+          "health": {
+            "auth_failures": 0,
+            "errors": 0,
+            "last_status": 200,
+            "latency_ms": {
+              "avg": 0.0,
+              "count": 1,
+              "max": 0,
+              "p50": 0,
+              "p95": 0,
+              "p99": 0
+            },
+            "requests": 1
+          },
+          "metrics.show": {
+            "auth_failures": 0,
+            "errors": 0,
+            "last_status": 200,
+            "latency_ms": {
+              "avg": 0.0,
+              "count": 1,
+              "max": 0,
+              "p50": 0,
+              "p95": 0,
+              "p99": 0
+            },
+            "requests": 1
+          },
+          "users.create": {
+            "auth_failures": 0,
+            "errors": 0,
+            "last_status": 201,
+            "latency_ms": {
+              "avg": 1.4,
+              "count": 5,
+              "max": 2,
+              "p50": 1,
+              "p95": 2,
+              "p99": 2
+            },
+            "requests": 5
+          },
+          "users.index": {
+            "auth_failures": 0,
+            "errors": 0,
+            "last_status": 200,
+            "latency_ms": {
+              "avg": 0.8765432098765432,
+              "count": 81,
+              "max": 2,
+              "p50": 1,
+              "p95": 1,
+              "p99": 1
+            },
+            "requests": 81
+          }
+        },
+        "runtime": {
+          "call_depth": 3,
+          "concurrent_requests": 0,
+          "elapsed_wall_time_ms": 5,
+          "max_call_depth": 1000,
+          "max_concurrent_requests": 16,
+          "max_heap_bytes": 67108864,
+          "max_open_sockets": 64,
+          "max_steps": 10000000,
+          "max_threads": 64,
+          "max_wall_time_ms": 400000,
+          "open_sockets": 0,
+          "peak_concurrent_requests": 0,
+          "peak_heap_bytes": 0,
+          "steps": 28,
+          "used_heap_bytes": 0
+        },
+        "snapshot": {
+          "env_snapshot_bytes_estimate": 80960,
+          "env_snapshot_count": 45,
+          "payload_snapshot_count": 89,
+          "prepared_call_count": 0,
+          "prepared_callable_count": 5,
+          "value_snapshot_bytes_estimate": 925724,
+          "value_snapshot_count": 4596
+        }
+      }
+    },
+    {
+      "time": 1775141038.3511925,
+      "rss_mb": 308.55,
+      "metrics": {
+        "async": {
+          "cancelled_jobs": 0,
+          "completed_jobs": 0,
+          "max_threads": 64,
+          "oldest_pending_ms": 0,
+          "pending_jobs": 0,
+          "possible_deadlock": false,
+          "retained_tasks": 0,
+          "running_jobs": 0,
+          "submitted_jobs": 0
+        },
+        "auth_failures": 0,
+        "enabled": true,
+        "errors": 0,
+        "latency_ms": {
+          "avg": 0.8106508875739645,
+          "count": 169,
+          "max": 2,
+          "p50": 1,
+          "p95": 1,
+          "p99": 2
+        },
+        "profile": {
+          "alloc_bytes": 183,
+          "alloc_count": 1,
+          "function_calls": {
+            "<lambda>": 2,
+            "runtime.profile": 1,
+            "runtime.request_metrics": 1,
+            "runtime.stats": 1,
+            "snapshot": 1,
+            "time.now_ms": 1
+          },
+          "function_time": {
+            "<lambda>": 710630,
+            "runtime.profile": 9000,
+            "runtime.request_metrics": 227524,
+            "runtime.stats": 23532,
+            "snapshot": 298681,
+            "time.now_ms": 9859
+          },
+          "io_call_count": 0,
+          "io_time": 0,
+          "io_time_ms": 0.0,
+          "module_time": {},
+          "peak_heap_bytes": 183,
+          "total_time": 7121549,
+          "total_time_ms": 7.121549,
+          "vm_alloc_bytes": 0,
+          "vm_alloc_count": 0,
+          "vm_avg_alloc_bytes_per_frame": 0.0,
+          "vm_frame_count": 0,
+          "vm_instruction_count": 11,
+          "vm_time": 0,
+          "vm_time_ms": 0.0
+        },
+        "requests": 169,
+        "routes": {
+          "health": {
+            "auth_failures": 0,
+            "errors": 0,
+            "last_status": 200,
+            "latency_ms": {
+              "avg": 0.0,
+              "count": 1,
+              "max": 0,
+              "p50": 0,
+              "p95": 0,
+              "p99": 0
+            },
+            "requests": 1
+          },
+          "metrics.show": {
+            "auth_failures": 0,
+            "errors": 0,
+            "last_status": 200,
+            "latency_ms": {
+              "avg": 0.5,
+              "count": 2,
+              "max": 1,
+              "p50": 0,
+              "p95": 0,
+              "p99": 0
+            },
+            "requests": 2
+          },
+          "users.create": {
+            "auth_failures": 0,
+            "errors": 0,
+            "last_status": 201,
+            "latency_ms": {
+              "avg": 1.4,
+              "count": 5,
+              "max": 2,
+              "p50": 1,
+              "p95": 2,
+              "p99": 2
+            },
+            "requests": 5
+          },
+          "users.index": {
+            "auth_failures": 0,
+            "errors": 0,
+            "last_status": 200,
+            "latency_ms": {
+              "avg": 0.8012422360248447,
+              "count": 161,
+              "max": 2,
+              "p50": 1,
+              "p95": 1,
+              "p99": 1
+            },
+            "requests": 161
+          }
+        },
+        "runtime": {
+          "call_depth": 3,
+          "concurrent_requests": 0,
+          "elapsed_wall_time_ms": 7,
+          "max_call_depth": 1000,
+          "max_concurrent_requests": 16,
+          "max_heap_bytes": 67108864,
+          "max_open_sockets": 64,
+          "max_steps": 10000000,
+          "max_threads": 64,
+          "max_wall_time_ms": 400000,
+          "open_sockets": 0,
+          "peak_concurrent_requests": 0,
+          "peak_heap_bytes": 0,
+          "steps": 28,
+          "used_heap_bytes": 0
+        },
+        "snapshot": {
+          "env_snapshot_bytes_estimate": 80960,
+          "env_snapshot_count": 45,
+          "payload_snapshot_count": 171,
+          "prepared_call_count": 0,
+          "prepared_callable_count": 5,
+          "value_snapshot_bytes_estimate": 1127938,
+          "value_snapshot_count": 5907
+        }
+      }
+    },
+    {
+      "time": 1775141040.360525,
+      "rss_mb": 429.06,
+      "metrics": {
+        "async": {
+          "cancelled_jobs": 0,
+          "completed_jobs": 0,
+          "max_threads": 64,
+          "oldest_pending_ms": 0,
+          "pending_jobs": 0,
+          "possible_deadlock": false,
+          "retained_tasks": 0,
+          "running_jobs": 0,
+          "submitted_jobs": 0
+        },
+        "auth_failures": 0,
+        "enabled": true,
+        "errors": 0,
+        "latency_ms": {
+          "avg": 0.8047808764940239,
+          "count": 251,
+          "max": 2,
+          "p50": 1,
+          "p95": 1,
+          "p99": 2
+        },
+        "profile": {
+          "alloc_bytes": 183,
+          "alloc_count": 1,
+          "function_calls": {
+            "<lambda>": 2,
+            "runtime.profile": 1,
+            "runtime.request_metrics": 1,
+            "runtime.stats": 1,
+            "snapshot": 1,
+            "time.now_ms": 1
+          },
+          "function_time": {
+            "<lambda>": 951371,
+            "runtime.profile": 10681,
+            "runtime.request_metrics": 317416,
+            "runtime.stats": 26207,
+            "snapshot": 405356,
+            "time.now_ms": 12943
+          },
+          "io_call_count": 0,
+          "io_time": 0,
+          "io_time_ms": 0.0,
+          "module_time": {},
+          "peak_heap_bytes": 183,
+          "total_time": 6573372,
+          "total_time_ms": 6.573372,
+          "vm_alloc_bytes": 0,
+          "vm_alloc_count": 0,
+          "vm_avg_alloc_bytes_per_frame": 0.0,
+          "vm_frame_count": 0,
+          "vm_instruction_count": 11,
+          "vm_time": 0,
+          "vm_time_ms": 0.0
+        },
+        "requests": 251,
+        "routes": {
+          "health": {
+            "auth_failures": 0,
+            "errors": 0,
+            "last_status": 200,
+            "latency_ms": {
+              "avg": 0.0,
+              "count": 1,
+              "max": 0,
+              "p50": 0,
+              "p95": 0,
+              "p99": 0
+            },
+            "requests": 1
+          },
+          "metrics.show": {
+            "auth_failures": 0,
+            "errors": 0,
+            "last_status": 200,
+            "latency_ms": {
+              "avg": 0.6666666666666666,
+              "count": 3,
+              "max": 1,
+              "p50": 1,
+              "p95": 1,
+              "p99": 1
+            },
+            "requests": 3
+          },
+          "users.create": {
+            "auth_failures": 0,
+            "errors": 0,
+            "last_status": 201,
+            "latency_ms": {
+              "avg": 1.4,
+              "count": 5,
+              "max": 2,
+              "p50": 1,
+              "p95": 2,
+              "p99": 2
+            },
+            "requests": 5
+          },
+          "users.index": {
+            "auth_failures": 0,
+            "errors": 0,
+            "last_status": 200,
+            "latency_ms": {
+              "avg": 0.7975206611570248,
+              "count": 242,
+              "max": 2,
+              "p50": 1,
+              "p95": 1,
+              "p99": 1
+            },
+            "requests": 242
+          }
+        },
+        "runtime": {
+          "call_depth": 3,
+          "concurrent_requests": 0,
+          "elapsed_wall_time_ms": 6,
+          "max_call_depth": 1000,
+          "max_concurrent_requests": 16,
+          "max_heap_bytes": 67108864,
+          "max_open_sockets": 64,
+          "max_steps": 10000000,
+          "max_threads": 64,
+          "max_wall_time_ms": 400000,
+          "open_sockets": 0,
+          "peak_concurrent_requests": 0,
+          "peak_heap_bytes": 0,
+          "steps": 28,
+          "used_heap_bytes": 0
+        },
+        "snapshot": {
+          "env_snapshot_bytes_estimate": 80960,
+          "env_snapshot_count": 45,
+          "payload_snapshot_count": 252,
+          "prepared_call_count": 0,
+          "prepared_callable_count": 5,
+          "value_snapshot_bytes_estimate": 1327684,
+          "value_snapshot_count": 7202
+        }
+      }
+    },
+    {
+      "time": 1775141042.3700395,
+      "rss_mb": 555.44,
+      "metrics": {
+        "async": {
+          "cancelled_jobs": 0,
+          "completed_jobs": 0,
+          "max_threads": 64,
+          "oldest_pending_ms": 0,
+          "pending_jobs": 0,
+          "possible_deadlock": false,
+          "retained_tasks": 0,
+          "running_jobs": 0,
+          "submitted_jobs": 0
+        },
+        "auth_failures": 0,
+        "enabled": true,
+        "errors": 0,
+        "latency_ms": {
+          "avg": 0.7425149700598802,
+          "count": 334,
+          "max": 2,
+          "p50": 1,
+          "p95": 1,
+          "p99": 2
+        },
+        "profile": {
+          "alloc_bytes": 183,
+          "alloc_count": 1,
+          "function_calls": {
+            "<lambda>": 2,
+            "runtime.profile": 1,
+            "runtime.request_metrics": 1,
+            "runtime.stats": 1,
+            "snapshot": 1,
+            "time.now_ms": 1
+          },
+          "function_time": {
+            "<lambda>": 1058875,
+            "runtime.profile": 9331,
+            "runtime.request_metrics": 396165,
+            "runtime.stats": 22846,
+            "snapshot": 467615,
+            "time.now_ms": 10426
+          },
+          "io_call_count": 0,
+          "io_time": 0,
+          "io_time_ms": 0.0,
+          "module_time": {},
+          "peak_heap_bytes": 183,
+          "total_time": 6613092,
+          "total_time_ms": 6.613092,
+          "vm_alloc_bytes": 0,
+          "vm_alloc_count": 0,
+          "vm_avg_alloc_bytes_per_frame": 0.0,
+          "vm_frame_count": 0,
+          "vm_instruction_count": 11,
+          "vm_time": 0,
+          "vm_time_ms": 0.0
+        },
+        "requests": 334,
+        "routes": {
+          "health": {
+            "auth_failures": 0,
+            "errors": 0,
+            "last_status": 200,
+            "latency_ms": {
+              "avg": 0.0,
+              "count": 1,
+              "max": 0,
+              "p50": 0,
+              "p95": 0,
+              "p99": 0
+            },
+            "requests": 1
+          },
+          "metrics.show": {
+            "auth_failures": 0,
+            "errors": 0,
+            "last_status": 200,
+            "latency_ms": {
+              "avg": 0.75,
+              "count": 4,
+              "max": 1,
+              "p50": 1,
+              "p95": 1,
+              "p99": 1
+            },
+            "requests": 4
+          },
+          "users.create": {
+            "auth_failures": 0,
+            "errors": 0,
+            "last_status": 201,
+            "latency_ms": {
+              "avg": 1.5,
+              "count": 6,
+              "max": 2,
+              "p50": 1,
+              "p95": 2,
+              "p99": 2
+            },
+            "requests": 6
+          },
+          "users.index": {
+            "auth_failures": 0,
+            "errors": 0,
+            "last_status": 200,
+            "latency_ms": {
+              "avg": 0.7298136645962733,
+              "count": 322,
+              "max": 2,
+              "p50": 1,
+              "p95": 1,
+              "p99": 1
+            },
+            "requests": 322
+          },
+          "users.show": {
+            "auth_failures": 0,
+            "errors": 0,
+            "last_status": 200,
+            "latency_ms": {
+              "avg": 1.0,
+              "count": 1,
+              "max": 1,
+              "p50": 1,
+              "p95": 1,
+              "p99": 1
+            },
+            "requests": 1
+          }
+        },
+        "runtime": {
+          "call_depth": 3,
+          "concurrent_requests": 0,
+          "elapsed_wall_time_ms": 6,
+          "max_call_depth": 1000,
+          "max_concurrent_requests": 16,
+          "max_heap_bytes": 67108864,
+          "max_open_sockets": 64,
+          "max_steps": 10000000,
+          "max_threads": 64,
+          "max_wall_time_ms": 400000,
+          "open_sockets": 0,
+          "peak_concurrent_requests": 0,
+          "peak_heap_bytes": 0,
+          "steps": 28,
+          "used_heap_bytes": 0
+        },
+        "snapshot": {
+          "env_snapshot_bytes_estimate": 80960,
+          "env_snapshot_count": 45,
+          "payload_snapshot_count": 337,
+          "prepared_call_count": 0,
+          "prepared_callable_count": 5,
+          "value_snapshot_bytes_estimate": 1539042,
+          "value_snapshot_count": 8571
+        }
+      }
+    },
+    {
+      "time": 1775141044.3848042,
+      "rss_mb": 977.51,
+      "metrics": {
+        "async": {
+          "cancelled_jobs": 0,
+          "completed_jobs": 0,
+          "max_threads": 64,
+          "oldest_pending_ms": 0,
+          "pending_jobs": 0,
+          "possible_deadlock": false,
+          "retained_tasks": 0,
+          "running_jobs": 0,
+          "submitted_jobs": 0
+        },
+        "auth_failures": 0,
+        "enabled": true,
+        "errors": 0,
+        "latency_ms": {
+          "avg": 1.1909722222222223,
+          "count": 576,
+          "max": 11,
+          "p50": 1,
+          "p95": 4,
+          "p99": 7
+        },
+        "profile": {
+          "alloc_bytes": 183,
+          "alloc_count": 1,
+          "function_calls": {
+            "<lambda>": 2,
+            "runtime.profile": 1,
+            "runtime.request_metrics": 1,
+            "runtime.stats": 1,
+            "snapshot": 1,
+            "time.now_ms": 1
+          },
+          "function_time": {
+            "<lambda>": 3045325,
+            "runtime.profile": 17577,
+            "runtime.request_metrics": 1286237,
+            "runtime.stats": 27385,
+            "snapshot": 1417193,
+            "time.now_ms": 8058
+          },
+          "io_call_count": 0,
+          "io_time": 0,
+          "io_time_ms": 0.0,
+          "module_time": {},
+          "peak_heap_bytes": 183,
+          "total_time": 11409787,
+          "total_time_ms": 11.409787,
+          "vm_alloc_bytes": 0,
+          "vm_alloc_count": 0,
+          "vm_avg_alloc_bytes_per_frame": 0.0,
+          "vm_frame_count": 0,
+          "vm_instruction_count": 11,
+          "vm_time": 0,
+          "vm_time_ms": 0.0
+        },
+        "requests": 576,
+        "routes": {
+          "health": {
+            "auth_failures": 0,
+            "errors": 0,
+            "last_status": 200,
+            "latency_ms": {
+              "avg": 0.0,
+              "count": 1,
+              "max": 0,
+              "p50": 0,
+              "p95": 0,
+              "p99": 0
+            },
+            "requests": 1
+          },
+          "metrics.show": {
+            "auth_failures": 0,
+            "errors": 0,
+            "last_status": 200,
+            "latency_ms": {
+              "avg": 0.6,
+              "count": 5,
+              "max": 1,
+              "p50": 1,
+              "p95": 1,
+              "p99": 1
+            },
+            "requests": 5
+          },
+          "users.create": {
+            "auth_failures": 0,
+            "errors": 0,
+            "last_status": 201,
+            "latency_ms": {
+              "avg": 4.388888888888889,
+              "count": 54,
+              "max": 11,
+              "p50": 4,
+              "p95": 8,
+              "p99": 10
+            },
+            "requests": 54
+          },
+          "users.index": {
+            "auth_failures": 0,
+            "errors": 0,
+            "last_status": 200,
+            "latency_ms": {
+              "avg": 0.8157894736842105,
+              "count": 418,
+              "max": 2,
+              "p50": 1,
+              "p95": 1,
+              "p99": 2
+            },
+            "requests": 418
+          },
+          "users.show": {
+            "auth_failures": 0,
+            "errors": 0,
+            "last_status": 200,
+            "latency_ms": {
+              "avg": 1.0714285714285714,
+              "count": 98,
+              "max": 3,
+              "p50": 1,
+              "p95": 2,
+              "p99": 2
+            },
+            "requests": 98
+          }
+        },
+        "runtime": {
+          "call_depth": 3,
+          "concurrent_requests": 0,
+          "elapsed_wall_time_ms": 11,
+          "max_call_depth": 1000,
+          "max_concurrent_requests": 16,
+          "max_heap_bytes": 67108864,
+          "max_open_sockets": 64,
+          "max_steps": 10000000,
+          "max_threads": 64,
+          "max_wall_time_ms": 400000,
+          "open_sockets": 0,
+          "peak_concurrent_requests": 0,
+          "peak_heap_bytes": 0,
+          "steps": 28,
+          "used_heap_bytes": 0
+        },
+        "snapshot": {
+          "env_snapshot_bytes_estimate": 80960,
+          "env_snapshot_count": 45,
+          "payload_snapshot_count": 579,
+          "prepared_call_count": 0,
+          "prepared_callable_count": 5,
+          "value_snapshot_bytes_estimate": 2185215,
+          "value_snapshot_count": 12731
+        }
+      }
+    },
+    {
+      "time": 1775141046.3965042,
+      "rss_mb": 1398.67,
+      "metrics": {
+        "async": {
+          "cancelled_jobs": 0,
+          "completed_jobs": 0,
+          "max_threads": 64,
+          "oldest_pending_ms": 0,
+          "pending_jobs": 0,
+          "possible_deadlock": false,
+          "retained_tasks": 0,
+          "running_jobs": 0,
+          "submitted_jobs": 0
+        },
+        "auth_failures": 0,
+        "enabled": true,
+        "errors": 1,
+        "latency_ms": {
+          "avg": 1.971916971916972,
+          "count": 819,
+          "max": 18,
+          "p50": 1,
+          "p95": 8,
+          "p99": 16
+        },
+        "profile": {
+          "alloc_bytes": 183,
+          "alloc_count": 1,
+          "function_calls": {
+            "<lambda>": 2,
+            "runtime.profile": 1,
+            "runtime.request_metrics": 1,
+            "runtime.stats": 1,
+            "snapshot": 1,
+            "time.now_ms": 1
+          },
+          "function_time": {
+            "<lambda>": 2420166,
+            "runtime.profile": 8903,
+            "runtime.request_metrics": 1083327,
+            "runtime.stats": 17211,
+            "snapshot": 1150793,
+            "time.now_ms": 5200
+          },
+          "io_call_count": 0,
+          "io_time": 0,
+          "io_time_ms": 0.0,
+          "module_time": {},
+          "peak_heap_bytes": 183,
+          "total_time": 9058230,
+          "total_time_ms": 9.05823,
+          "vm_alloc_bytes": 0,
+          "vm_alloc_count": 0,
+          "vm_avg_alloc_bytes_per_frame": 0.0,
+          "vm_frame_count": 0,
+          "vm_instruction_count": 11,
+          "vm_time": 0,
+          "vm_time_ms": 0.0
+        },
+        "requests": 819,
+        "routes": {
+          "health": {
+            "auth_failures": 0,
+            "errors": 0,
+            "last_status": 200,
+            "latency_ms": {
+              "avg": 0.0,
+              "count": 1,
+              "max": 0,
+              "p50": 0,
+              "p95": 0,
+              "p99": 0
+            },
+            "requests": 1
+          },
+          "metrics.show": {
+            "auth_failures": 0,
+            "errors": 0,
+            "last_status": 200,
+            "latency_ms": {
+              "avg": 0.8333333333333334,
+              "count": 6,
+              "max": 2,
+              "p50": 1,
+              "p95": 1,
+              "p99": 1
+            },
+            "requests": 6
+          },
+          "users.create": {
+            "auth_failures": 0,
+            "errors": 0,
+            "last_status": 201,
+            "latency_ms": {
+              "avg": 7.834951456310679,
+              "count": 103,
+              "max": 18,
+              "p50": 7,
+              "p95": 16,
+              "p99": 17
+            },
+            "requests": 103
+          },
+          "users.index": {
+            "auth_failures": 0,
+            "errors": 0,
+            "last_status": 200,
+            "latency_ms": {
+              "avg": 1.037109375,
+              "count": 512,
+              "max": 4,
+              "p50": 1,
+              "p95": 2,
+              "p99": 3
+            },
+            "requests": 514
+          },
+          "users.show": {
+            "auth_failures": 0,
+            "errors": 1,
+            "last_status": 200,
+            "latency_ms": {
+              "avg": 1.3846153846153846,
+              "count": 195,
+              "max": 6,
+              "p50": 1,
+              "p95": 3,
+              "p99": 3
+            },
+            "requests": 195
+          }
+        },
+        "runtime": {
+          "call_depth": 3,
+          "concurrent_requests": 0,
+          "elapsed_wall_time_ms": 9,
+          "max_call_depth": 1000,
+          "max_concurrent_requests": 16,
+          "max_heap_bytes": 67108864,
+          "max_open_sockets": 64,
+          "max_steps": 10000000,
+          "max_threads": 64,
+          "max_wall_time_ms": 400000,
+          "open_sockets": 0,
+          "peak_concurrent_requests": 0,
+          "peak_heap_bytes": 0,
+          "steps": 28,
+          "used_heap_bytes": 0
+        },
+        "snapshot": {
+          "env_snapshot_bytes_estimate": 80960,
+          "env_snapshot_count": 45,
+          "payload_snapshot_count": 822,
+          "prepared_call_count": 0,
+          "prepared_callable_count": 5,
+          "value_snapshot_bytes_estimate": 2833928,
+          "value_snapshot_count": 16907
+        }
+      }
+    },
+    {
+      "time": 1775141048.4163847,
+      "rss_mb": 1820.31,
+      "metrics": {
+        "async": {
+          "cancelled_jobs": 0,
+          "completed_jobs": 0,
+          "max_threads": 64,
+          "oldest_pending_ms": 0,
+          "pending_jobs": 0,
+          "possible_deadlock": false,
+          "retained_tasks": 0,
+          "running_jobs": 0,
+          "submitted_jobs": 0
+        },
+        "auth_failures": 0,
+        "enabled": true,
+        "errors": 1,
+        "latency_ms": {
+          "avg": 3.193396226415094,
+          "count": 1060,
+          "max": 94,
+          "p50": 1,
+          "p95": 14,
+          "p99": 25
+        },
+        "profile": {
+          "alloc_bytes": 183,
+          "alloc_count": 1,
+          "function_calls": {
+            "<lambda>": 2,
+            "runtime.profile": 1,
+            "runtime.request_metrics": 1,
+            "runtime.stats": 1,
+            "snapshot": 1,
+            "time.now_ms": 1
+          },
+          "function_time": {
+            "<lambda>": 5841616,
+            "runtime.profile": 14368,
+            "runtime.request_metrics": 2723616,
+            "runtime.stats": 27709,
+            "snapshot": 2836555,
+            "time.now_ms": 9790
+          },
+          "io_call_count": 0,
+          "io_time": 0,
+          "io_time_ms": 0.0,
+          "module_time": {},
+          "peak_heap_bytes": 183,
+          "total_time": 14874286,
+          "total_time_ms": 14.874286,
+          "vm_alloc_bytes": 0,
+          "vm_alloc_count": 0,
+          "vm_avg_alloc_bytes_per_frame": 0.0,
+          "vm_frame_count": 0,
+          "vm_instruction_count": 11,
+          "vm_time": 0,
+          "vm_time_ms": 0.0
+        },
+        "requests": 1060,
+        "routes": {
+          "health": {
+            "auth_failures": 0,
+            "errors": 0,
+            "last_status": 200,
+            "latency_ms": {
+              "avg": 0.0,
+              "count": 1,
+              "max": 0,
+              "p50": 0,
+              "p95": 0,
+              "p99": 0
+            },
+            "requests": 1
+          },
+          "metrics.show": {
+            "auth_failures": 0,
+            "errors": 0,
+            "last_status": 200,
+            "latency_ms": {
+              "avg": 1.0,
+              "count": 7,
+              "max": 2,
+              "p50": 1,
+              "p95": 2,
+              "p99": 2
+            },
+            "requests": 7
+          },
+          "users.create": {
+            "auth_failures": 0,
+            "errors": 0,
+            "last_status": 201,
+            "latency_ms": {
+              "avg": 13.046666666666667,
+              "count": 150,
+              "max": 94,
+              "p50": 11,
+              "p95": 34,
+              "p99": 78
+            },
+            "requests": 150
+          },
+          "users.index": {
+            "auth_failures": 0,
+            "errors": 0,
+            "last_status": 200,
+            "latency_ms": {
+              "avg": 1.4765625,
+              "count": 512,
+              "max": 14,
+              "p50": 1,
+              "p95": 3,
+              "p99": 6
+            },
+            "requests": 611
+          },
+          "users.show": {
+            "auth_failures": 0,
+            "errors": 1,
+            "last_status": 200,
+            "latency_ms": {
+              "avg": 2.0,
+              "count": 291,
+              "max": 17,
+              "p50": 2,
+              "p95": 4,
+              "p99": 10
+            },
+            "requests": 291
+          }
+        },
+        "runtime": {
+          "call_depth": 3,
+          "concurrent_requests": 0,
+          "elapsed_wall_time_ms": 14,
+          "max_call_depth": 1000,
+          "max_concurrent_requests": 16,
+          "max_heap_bytes": 67108864,
+          "max_open_sockets": 64,
+          "max_steps": 10000000,
+          "max_threads": 64,
+          "max_wall_time_ms": 400000,
+          "open_sockets": 0,
+          "peak_concurrent_requests": 0,
+          "peak_heap_bytes": 0,
+          "steps": 28,
+          "used_heap_bytes": 0
+        },
+        "snapshot": {
+          "env_snapshot_bytes_estimate": 80960,
+          "env_snapshot_count": 45,
+          "payload_snapshot_count": 1065,
+          "prepared_call_count": 0,
+          "prepared_callable_count": 5,
+          "value_snapshot_bytes_estimate": 3483233,
+          "value_snapshot_count": 21086
+        }
+      }
+    },
+    {
+      "time": 1775141050.4340231,
+      "rss_mb": 2227.43,
+      "metrics": {
+        "async": {
+          "cancelled_jobs": 0,
+          "completed_jobs": 0,
+          "max_threads": 64,
+          "oldest_pending_ms": 0,
+          "pending_jobs": 0,
+          "possible_deadlock": false,
+          "retained_tasks": 0,
+          "running_jobs": 0,
+          "submitted_jobs": 0
+        },
+        "auth_failures": 1,
+        "enabled": true,
+        "errors": 2,
+        "latency_ms": {
+          "avg": 4.890600924499229,
+          "count": 1298,
+          "max": 106,
+          "p50": 2,
+          "p95": 20,
+          "p99": 46
+        },
+        "profile": {
+          "alloc_bytes": 183,
+          "alloc_count": 1,
+          "function_calls": {
+            "<lambda>": 2,
+            "runtime.profile": 1,
+            "runtime.request_metrics": 1,
+            "runtime.stats": 1,
+            "snapshot": 1,
+            "time.now_ms": 1
+          },
+          "function_time": {
+            "<lambda>": 7467844,
+            "runtime.profile": 11902,
+            "runtime.request_metrics": 3516591,
+            "runtime.stats": 29263,
+            "snapshot": 3650844,
+            "time.now_ms": 9356
+          },
+          "io_call_count": 0,
+          "io_time": 0,
+          "io_time_ms": 0.0,
+          "module_time": {},
+          "peak_heap_bytes": 183,
+          "total_time": 13634962,
+          "total_time_ms": 13.634962,
+          "vm_alloc_bytes": 0,
+          "vm_alloc_count": 0,
+          "vm_avg_alloc_bytes_per_frame": 0.0,
+          "vm_frame_count": 0,
+          "vm_instruction_count": 11,
+          "vm_time": 0,
+          "vm_time_ms": 0.0
+        },
+        "requests": 1298,
+        "routes": {
+          "health": {
+            "auth_failures": 0,
+            "errors": 0,
+            "last_status": 200,
+            "latency_ms": {
+              "avg": 0.0,
+              "count": 1,
+              "max": 0,
+              "p50": 0,
+              "p95": 0,
+              "p99": 0
+            },
+            "requests": 1
+          },
+          "metrics.show": {
+            "auth_failures": 0,
+            "errors": 0,
+            "last_status": 200,
+            "latency_ms": {
+              "avg": 1.25,
+              "count": 8,
+              "max": 3,
+              "p50": 1,
+              "p95": 2,
+              "p99": 2
+            },
+            "requests": 8
+          },
+          "users.create": {
+            "auth_failures": 0,
+            "errors": 0,
+            "last_status": 201,
+            "latency_ms": {
+              "avg": 19.20812182741117,
+              "count": 197,
+              "max": 106,
+              "p50": 13,
+              "p95": 53,
+              "p99": 92
+            },
+            "requests": 197
+          },
+          "users.index": {
+            "auth_failures": 1,
+            "errors": 1,
+            "last_status": 200,
+            "latency_ms": {
+              "avg": 2.419921875,
+              "count": 512,
+              "max": 18,
+              "p50": 2,
+              "p95": 7,
+              "p99": 15
+            },
+            "requests": 708
+          },
+          "users.show": {
+            "auth_failures": 0,
+            "errors": 1,
+            "last_status": 200,
+            "latency_ms": {
+              "avg": 3.015625,
+              "count": 384,
+              "max": 22,
+              "p50": 2,
+              "p95": 10,
+              "p99": 17
+            },
+            "requests": 384
+          }
+        },
+        "runtime": {
+          "call_depth": 3,
+          "concurrent_requests": 0,
+          "elapsed_wall_time_ms": 13,
+          "max_call_depth": 1000,
+          "max_concurrent_requests": 16,
+          "max_heap_bytes": 67108864,
+          "max_open_sockets": 64,
+          "max_steps": 10000000,
+          "max_threads": 64,
+          "max_wall_time_ms": 400000,
+          "open_sockets": 0,
+          "peak_concurrent_requests": 0,
+          "peak_heap_bytes": 0,
+          "steps": 28,
+          "used_heap_bytes": 0
+        },
+        "snapshot": {
+          "env_snapshot_bytes_estimate": 80960,
+          "env_snapshot_count": 45,
+          "payload_snapshot_count": 1300,
+          "prepared_call_count": 0,
+          "prepared_callable_count": 5,
+          "value_snapshot_bytes_estimate": 4109259,
+          "value_snapshot_count": 25117
+        }
+      }
+    },
+    {
+      "time": 1775141052.45408,
+      "rss_mb": 2468.75,
+      "metrics": {
+        "async": {
+          "cancelled_jobs": 0,
+          "completed_jobs": 0,
+          "max_threads": 64,
+          "oldest_pending_ms": 0,
+          "pending_jobs": 0,
+          "possible_deadlock": false,
+          "retained_tasks": 0,
+          "running_jobs": 0,
+          "submitted_jobs": 0
+        },
+        "auth_failures": 24,
+        "enabled": true,
+        "errors": 25,
+        "latency_ms": {
+          "avg": 4.613950276243094,
+          "count": 1448,
+          "max": 106,
+          "p50": 2,
+          "p95": 18,
+          "p99": 45
+        },
+        "profile": {
+          "alloc_bytes": 183,
+          "alloc_count": 1,
+          "function_calls": {
+            "<lambda>": 2,
+            "runtime.profile": 1,
+            "runtime.request_metrics": 1,
+            "runtime.stats": 1,
+            "snapshot": 1,
+            "time.now_ms": 1
+          },
+          "function_time": {
+            "<lambda>": 10873233,
+            "runtime.profile": 92703,
+            "runtime.request_metrics": 5101654,
+            "runtime.stats": 31549,
+            "snapshot": 5313700,
+            "time.now_ms": 11959
+          },
+          "io_call_count": 0,
+          "io_time": 0,
+          "io_time_ms": 0.0,
+          "module_time": {},
+          "peak_heap_bytes": 183,
+          "total_time": 15747241,
+          "total_time_ms": 15.747241,
+          "vm_alloc_bytes": 0,
+          "vm_alloc_count": 0,
+          "vm_avg_alloc_bytes_per_frame": 0.0,
+          "vm_frame_count": 0,
+          "vm_instruction_count": 11,
+          "vm_time": 0,
+          "vm_time_ms": 0.0
+        },
+        "requests": 1448,
+        "routes": {
+          "health": {
+            "auth_failures": 0,
+            "errors": 0,
+            "last_status": 200,
+            "latency_ms": {
+              "avg": 0.0,
+              "count": 1,
+              "max": 0,
+              "p50": 0,
+              "p95": 0,
+              "p99": 0
+            },
+            "requests": 1
+          },
+          "metrics.show": {
+            "auth_failures": 0,
+            "errors": 0,
+            "last_status": 200,
+            "latency_ms": {
+              "avg": 1.5555555555555556,
+              "count": 9,
+              "max": 4,
+              "p50": 1,
+              "p95": 3,
+              "p99": 3
+            },
+            "requests": 9
+          },
+          "users.create": {
+            "auth_failures": 0,
+            "errors": 0,
+            "last_status": 201,
+            "latency_ms": {
+              "avg": 19.20812182741117,
+              "count": 197,
+              "max": 106,
+              "p50": 13,
+              "p95": 53,
+              "p99": 92
+            },
+            "requests": 197
+          },
+          "users.index": {
+            "auth_failures": 24,
+            "errors": 24,
+            "last_status": 200,
+            "latency_ms": {
+              "avg": 2.689453125,
+              "count": 512,
+              "max": 18,
+              "p50": 2,
+              "p95": 7,
+              "p99": 15
+            },
+            "requests": 814
+          },
+          "users.show": {
+            "auth_failures": 0,
+            "errors": 1,
+            "last_status": 200,
+            "latency_ms": {
+              "avg": 3.002341920374707,
+              "count": 427,
+              "max": 22,
+              "p50": 2,
+              "p95": 8,
+              "p99": 17
+            },
+            "requests": 427
+          }
+        },
+        "runtime": {
+          "call_depth": 3,
+          "concurrent_requests": 0,
+          "elapsed_wall_time_ms": 15,
+          "max_call_depth": 1000,
+          "max_concurrent_requests": 16,
+          "max_heap_bytes": 67108864,
+          "max_open_sockets": 64,
+          "max_steps": 10000000,
+          "max_threads": 64,
+          "max_wall_time_ms": 400000,
+          "open_sockets": 0,
+          "peak_concurrent_requests": 0,
+          "peak_heap_bytes": 0,
+          "steps": 28,
+          "used_heap_bytes": 0
+        },
+        "snapshot": {
+          "env_snapshot_bytes_estimate": 80960,
+          "env_snapshot_count": 45,
+          "payload_snapshot_count": 1450,
+          "prepared_call_count": 0,
+          "prepared_callable_count": 5,
+          "value_snapshot_bytes_estimate": 4481485,
+          "value_snapshot_count": 27535
+        }
+      }
+    },
+    {
+      "time": 1775141054.4645307,
+      "rss_mb": 2710.52,
+      "metrics": {
+        "async": {
+          "cancelled_jobs": 0,
+          "completed_jobs": 0,
+          "max_threads": 64,
+          "oldest_pending_ms": 0,
+          "pending_jobs": 0,
+          "possible_deadlock": false,
+          "retained_tasks": 0,
+          "running_jobs": 0,
+          "submitted_jobs": 0
+        },
+        "auth_failures": 47,
+        "enabled": true,
+        "errors": 48,
+        "latency_ms": {
+          "avg": 4.42991239048811,
+          "count": 1598,
+          "max": 106,
+          "p50": 2,
+          "p95": 17,
+          "p99": 44
+        },
+        "profile": {
+          "alloc_bytes": 183,
+          "alloc_count": 1,
+          "function_calls": {
+            "<lambda>": 2,
+            "runtime.profile": 1,
+            "runtime.request_metrics": 1,
+            "runtime.stats": 1,
+            "snapshot": 1,
+            "time.now_ms": 1
+          },
+          "function_time": {
+            "<lambda>": 4501775,
+            "runtime.profile": 8864,
+            "runtime.request_metrics": 2107540,
+            "runtime.stats": 16815,
+            "snapshot": 2171594,
+            "time.now_ms": 10713
+          },
+          "io_call_count": 0,
+          "io_time": 0,
+          "io_time_ms": 0.0,
+          "module_time": {},
+          "peak_heap_bytes": 183,
+          "total_time": 7567319,
+          "total_time_ms": 7.567319,
+          "vm_alloc_bytes": 0,
+          "vm_alloc_count": 0,
+          "vm_avg_alloc_bytes_per_frame": 0.0,
+          "vm_frame_count": 0,
+          "vm_instruction_count": 11,
+          "vm_time": 0,
+          "vm_time_ms": 0.0
+        },
+        "requests": 1598,
+        "routes": {
+          "health": {
+            "auth_failures": 0,
+            "errors": 0,
+            "last_status": 200,
+            "latency_ms": {
+              "avg": 0.0,
+              "count": 1,
+              "max": 0,
+              "p50": 0,
+              "p95": 0,
+              "p99": 0
+            },
+            "requests": 1
+          },
+          "metrics.show": {
+            "auth_failures": 0,
+            "errors": 0,
+            "last_status": 200,
+            "latency_ms": {
+              "avg": 2.0,
+              "count": 10,
+              "max": 6,
+              "p50": 1,
+              "p95": 4,
+              "p99": 4
+            },
+            "requests": 10
+          },
+          "users.create": {
+            "auth_failures": 0,
+            "errors": 0,
+            "last_status": 201,
+            "latency_ms": {
+              "avg": 19.20812182741117,
+              "count": 197,
+              "max": 106,
+              "p50": 13,
+              "p95": 53,
+              "p99": 92
+            },
+            "requests": 197
+          },
+          "users.index": {
+            "auth_failures": 47,
+            "errors": 47,
+            "last_status": 200,
+            "latency_ms": {
+              "avg": 2.9765625,
+              "count": 512,
+              "max": 18,
+              "p50": 2,
+              "p95": 7,
+              "p99": 15
+            },
+            "requests": 921
+          },
+          "users.show": {
+            "auth_failures": 0,
+            "errors": 1,
+            "last_status": 200,
+            "latency_ms": {
+              "avg": 3.0341151385927505,
+              "count": 469,
+              "max": 22,
+              "p50": 2,
+              "p95": 8,
+              "p99": 17
+            },
+            "requests": 469
+          }
+        },
+        "runtime": {
+          "call_depth": 3,
+          "concurrent_requests": 0,
+          "elapsed_wall_time_ms": 7,
+          "max_call_depth": 1000,
+          "max_concurrent_requests": 16,
+          "max_heap_bytes": 67108864,
+          "max_open_sockets": 64,
+          "max_steps": 10000000,
+          "max_threads": 64,
+          "max_wall_time_ms": 400000,
+          "open_sockets": 0,
+          "peak_concurrent_requests": 0,
+          "peak_heap_bytes": 0,
+          "steps": 28,
+          "used_heap_bytes": 0
+        },
+        "snapshot": {
+          "env_snapshot_bytes_estimate": 80960,
+          "env_snapshot_count": 45,
+          "payload_snapshot_count": 1599,
+          "prepared_call_count": 0,
+          "prepared_callable_count": 5,
+          "value_snapshot_bytes_estimate": 4851243,
+          "value_snapshot_count": 29937
+        }
+      }
+    },
+    {
+      "time": 1775141056.499767,
+      "rss_mb": 2954.71,
+      "metrics": {
+        "async": {
+          "cancelled_jobs": 0,
+          "completed_jobs": 0,
+          "max_threads": 64,
+          "oldest_pending_ms": 0,
+          "pending_jobs": 0,
+          "possible_deadlock": false,
+          "retained_tasks": 0,
+          "running_jobs": 0,
+          "submitted_jobs": 0
+        },
+        "auth_failures": 70,
+        "enabled": true,
+        "errors": 71,
+        "latency_ms": {
+          "avg": 4.314253005151689,
+          "count": 1747,
+          "max": 106,
+          "p50": 2,
+          "p95": 16,
+          "p99": 41
+        },
+        "profile": {
+          "alloc_bytes": 183,
+          "alloc_count": 1,
+          "function_calls": {
+            "<lambda>": 2,
+            "runtime.profile": 1,
+            "runtime.request_metrics": 1,
+            "runtime.stats": 1,
+            "snapshot": 1,
+            "time.now_ms": 1
+          },
+          "function_time": {
+            "<lambda>": 17830553,
+            "runtime.profile": 22519,
+            "runtime.request_metrics": 8555682,
+            "runtime.stats": 50670,
+            "snapshot": 8818577,
+            "time.now_ms": 7147
+          },
+          "io_call_count": 0,
+          "io_time": 0,
+          "io_time_ms": 0.0,
+          "module_time": {},
+          "peak_heap_bytes": 183,
+          "total_time": 24150939,
+          "total_time_ms": 24.150939,
+          "vm_alloc_bytes": 0,
+          "vm_alloc_count": 0,
+          "vm_avg_alloc_bytes_per_frame": 0.0,
+          "vm_frame_count": 0,
+          "vm_instruction_count": 11,
+          "vm_time": 0,
+          "vm_time_ms": 0.0
+        },
+        "requests": 1747,
+        "routes": {
+          "health": {
+            "auth_failures": 0,
+            "errors": 0,
+            "last_status": 200,
+            "latency_ms": {
+              "avg": 0.0,
+              "count": 1,
+              "max": 0,
+              "p50": 0,
+              "p95": 0,
+              "p99": 0
+            },
+            "requests": 1
+          },
+          "metrics.show": {
+            "auth_failures": 0,
+            "errors": 0,
+            "last_status": 200,
+            "latency_ms": {
+              "avg": 2.0,
+              "count": 11,
+              "max": 6,
+              "p50": 2,
+              "p95": 4,
+              "p99": 4
+            },
+            "requests": 11
+          },
+          "users.create": {
+            "auth_failures": 0,
+            "errors": 0,
+            "last_status": 201,
+            "latency_ms": {
+              "avg": 19.20812182741117,
+              "count": 197,
+              "max": 106,
+              "p50": 13,
+              "p95": 53,
+              "p99": 92
+            },
+            "requests": 197
+          },
+          "users.index": {
+            "auth_failures": 70,
+            "errors": 70,
+            "last_status": 200,
+            "latency_ms": {
+              "avg": 3.1484375,
+              "count": 512,
+              "max": 18,
+              "p50": 2,
+              "p95": 7,
+              "p99": 15
+            },
+            "requests": 1027
+          },
+          "users.show": {
+            "auth_failures": 0,
+            "errors": 1,
+            "last_status": 200,
+            "latency_ms": {
+              "avg": 3.0978473581213306,
+              "count": 511,
+              "max": 22,
+              "p50": 2,
+              "p95": 8,
+              "p99": 16
+            },
+            "requests": 511
+          }
+        },
+        "runtime": {
+          "call_depth": 3,
+          "concurrent_requests": 0,
+          "elapsed_wall_time_ms": 24,
+          "max_call_depth": 1000,
+          "max_concurrent_requests": 16,
+          "max_heap_bytes": 67108864,
+          "max_open_sockets": 64,
+          "max_steps": 10000000,
+          "max_threads": 64,
+          "max_wall_time_ms": 400000,
+          "open_sockets": 0,
+          "peak_concurrent_requests": 0,
+          "peak_heap_bytes": 0,
+          "steps": 28,
+          "used_heap_bytes": 0
+        },
+        "snapshot": {
+          "env_snapshot_bytes_estimate": 80960,
+          "env_snapshot_count": 45,
+          "payload_snapshot_count": 1750,
+          "prepared_call_count": 0,
+          "prepared_callable_count": 5,
+          "value_snapshot_bytes_estimate": 5226080,
+          "value_snapshot_count": 32372
+        }
+      }
+    }
+  ]
+}

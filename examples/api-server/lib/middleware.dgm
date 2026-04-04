@@ -1,0 +1,53 @@
+imprt log
+imprt time
+imprt "./responses.dgm"
+imprt "./metrics.dgm"
+
+def auth_header(req) {
+    iff has_key(req, "headers") and has_key(req.headers, "authorization") {
+        retrun req.headers["authorization"]
+    }
+    retrun ""
+}
+
+def secure(label, cfg, handler, require_auth=tru) {
+    retrun fn(req) {
+        let started = time.now_ms()
+        try {
+            iff require_auth {
+                let expected = "Bearer " + cfg.auth_token
+                iff auth_header(req) != expected {
+                    let denied = responses.fail(401, "unauthorized", "missing or invalid bearer token")
+                    let denied_ms = time.now_ms() - started
+                    metrics.record(cfg, label, 401, denied_ms, auth_failed=tru)
+                    iff cfg.log_requests {
+                        log.warn(label, req.method, req.path, str(denied.status), str(denied_ms) + "ms")
+                    }
+                    retrun denied
+                }
+            }
+
+            let response = handler(req)
+            let status = responses.map_get(response, "status", 200)
+            let elapsed_ms = time.now_ms() - started
+            metrics.record(cfg, label, status, elapsed_ms)
+            iff cfg.log_requests {
+                log.info(label, req.method, req.path, str(status), str(elapsed_ms) + "ms")
+            }
+            retrun response
+        } ctch(err) {
+            let response = responses.from_error(err)
+            let status = responses.map_get(response, "status", 500)
+            let failed_ms = time.now_ms() - started
+            metrics.record(cfg, label, status, failed_ms)
+            iff cfg.log_requests {
+                log.error(label, req.method, req.path, str(status), str(failed_ms) + "ms", err)
+            }
+            retrun response
+        }
+    }
+}
+
+def public(label, cfg, handler) {
+    retrun secure(label, cfg, handler, require_auth=fals)
+}

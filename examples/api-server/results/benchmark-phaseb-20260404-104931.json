@@ -1,0 +1,59 @@
+{
+  "mode": "full",
+  "generated_at": "2026-04-04T10:49:44",
+  "results": [
+    {
+      "runtime": "dgm",
+      "port": 41257,
+      "peak_rss_mb": 36.79,
+      "final_rss_mb": 0.0,
+      "avg_cpu_pct": 123.26,
+      "peak_cpu_pct": 262.76,
+      "scenarios": [
+        {
+          "name": "GET /users",
+          "requests": 1200,
+          "successes": 1200,
+          "errors": 0,
+          "requests_per_sec": 216.66,
+          "latency_ms": {
+            "avg": 139.05,
+            "p50": 123.75,
+            "p95": 276.63,
+            "p99": 438.06,
+            "max": 649.67
+          }
+        },
+        {
+          "name": "GET /users/:id",
+          "requests": 1200,
+          "successes": 1200,
+          "errors": 0,
+          "requests_per_sec": 236.73,
+          "latency_ms": {
+            "avg": 130.5,
+            "p50": 119.94,
+            "p95": 242.04,
+            "p99": 315.4,
+            "max": 654.55
+          }
+        },
+        {
+          "name": "POST /users",
+          "requests": 300,
+          "successes": 119,
+          "errors": 181,
+          "requests_per_sec": 239.7,
+          "latency_ms": {
+            "avg": 47.93,
+            "p50": 7.98,
+            "p95": 180.22,
+            "p99": 203.58,
+            "max": 228.56
+          }
+        }
+      ],
+      "metrics": null
+    }
+  ]
+}

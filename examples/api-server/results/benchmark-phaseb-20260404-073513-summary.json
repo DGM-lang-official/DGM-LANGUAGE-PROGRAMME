@@ -1,0 +1,90 @@
+{
+  "generated_at": "2026-04-04T07:36:04",
+  "dgm": {
+    "peak_rss_mb": 41.84,
+    "final_rss_mb": 37.8,
+    "avg_cpu_pct": 287.99,
+    "peak_cpu_pct": 378.44,
+    "scenarios": {
+      "GET /users": {
+        "req_per_sec": 521.82,
+        "p50_ms": 55.87,
+        "p95_ms": 97.53,
+        "p99_ms": 122.21,
+        "errors": 0
+      },
+      "GET /users/:id": {
+        "req_per_sec": 499.49,
+        "p50_ms": 54.3,
+        "p95_ms": 116.22,
+        "p99_ms": 279.34,
+        "errors": 0
+      },
+      "POST /users": {
+        "req_per_sec": 135.41,
+        "p50_ms": 70.88,
+        "p95_ms": 189.69,
+        "p99_ms": 224.92,
+        "errors": 0
+      }
+    }
+  },
+  "node": {
+    "peak_rss_mb": 66.51,
+    "final_rss_mb": 66.54,
+    "avg_cpu_pct": 89.02,
+    "peak_cpu_pct": 129.29,
+    "scenarios": {
+      "GET /users": {
+        "req_per_sec": 1616.12,
+        "p50_ms": 19.22,
+        "p95_ms": 31.9,
+        "p99_ms": 40.75,
+        "errors": 0
+      },
+      "GET /users/:id": {
+        "req_per_sec": 1424.93,
+        "p50_ms": 18.55,
+        "p95_ms": 41.92,
+        "p99_ms": 79.68,
+        "errors": 0
+      },
+      "POST /users": {
+        "req_per_sec": 688.82,
+        "p50_ms": 16.22,
+        "p95_ms": 21.68,
+        "p99_ms": 23.14,
+        "errors": 0
+      }
+    }
+  },
+  "python": {
+    "peak_rss_mb": 23.48,
+    "final_rss_mb": 23.48,
+    "avg_cpu_pct": 19.71,
+    "peak_cpu_pct": 117.38,
+    "scenarios": {
+      "GET /users": {
+        "req_per_sec": 511.93,
+        "p50_ms": 6.94,
+        "p95_ms": 18.69,
+        "p99_ms": 1246.29,
+        "errors": 0
+      },
+      "GET /users/:id": {
+        "req_per_sec": 449.78,
+        "p50_ms": 9.2,
+        "p95_ms": 30.22,
+        "p99_ms": 2072.56,
+        "errors": 0
+      },
+      "POST /users": {
+        "req_per_sec": 28.89,
+        "p50_ms": 5.21,
+        "p95_ms": 89.9,
+        "p99_ms": 10010.53,
+        "errors": 41
+      }
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "generated_at": "2026-04-04T10:16:12",
+  "dgm": {
+    "peak_rss_mb": 40.02,
+    "final_rss_mb": 36.03,
+    "avg_cpu_pct": 289.86,
+    "peak_cpu_pct": 398.33,
+    "scenarios": {
+      "GET /users": {
+        "req_per_sec": 621.25,
+        "p50_ms": 46.8,
+        "p95_ms": 70.66,
+        "p99_ms": 84.13,
+        "errors": 0
+      },
+      "GET /users/:id": {
+        "req_per_sec": 470.79,
+        "p50_ms": 56.08,
+        "p95_ms": 142.91,
+        "p99_ms": 196.19,
+        "errors": 0
+      },
+      "POST /users": {
+        "req_per_sec": 140.11,
+        "p50_ms": 83.65,
+        "p95_ms": 142.06,
+        "p99_ms": 155.72,
+        "errors": 0
+      }
+    }
+  }
+}

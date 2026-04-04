@@ -1,0 +1,106 @@
+imprt io
+imprt json
+imprt path
+imprt "./responses.dgm"
+
+def db_file(cfg) {
+    retrun path.safe_join(cfg.data_dir, "users.json")
+}
+
+def ensure(cfg) {
+    iff !io.exists(cfg.data_dir) {
+        io.mkdir(cfg.data_dir)
+    }
+    let file = db_file(cfg)
+    iff !io.exists(file) {
+        io.write_file(file, "[]")
+        json.invalidate_file_cache(file)
+    }
+}
+
+def load_users_view(cfg) {
+    ensure(cfg)
+    let users = json.read_file_cached(db_file(cfg))
+    iff type(users) != "list" {
+        responses.abort(500, "db_invalid", "users store must be a list")
+    }
+    retrun users
+}
+
+def load_users_mutable(cfg) {
+    let users = json.materialize(load_users_view(cfg))
+    iff type(users) != "list" {
+        responses.abort(500, "db_invalid", "users store must be a list")
+    }
+    retrun users
+}
+
+def save_users(cfg, users) {
+    let file = db_file(cfg)
+    io.write_file(file, json.stringify(users))
+    json.invalidate_file_cache(file)
+}
+
+def append_user(cfg, user) {
+    let file = db_file(cfg)
+    json.append_to_array_file(file, user)
+}
+
+def next_id(users) {
+    let highest = 0
+    fr user in users {
+        let current = int(str(responses.map_get(user, "id", "0")))
+        iff current > highest {
+            highest = current
+        }
+    }
+    retrun str(highest + 1)
+}
+
+def sanitize_name(payload) {
+    let name = trim(str(responses.map_get(payload, "name", "")))
+    iff name == "" {
+        responses.abort(400, "invalid_name", "name is required")
+    }
+    retrun name
+}
+
+def sanitize_email(payload) {
+    let email = lower(trim(str(responses.map_get(payload, "email", ""))))
+    iff email == "" {
+        responses.abort(400, "invalid_email", "email is required")
+    }
+    retrun email
+}
+
+def list_users(cfg) {
+    retrun load_users_view(cfg)
+}
+
+def list_users_response_json(cfg) {
+    ensure(cfg)
+    retrun json.raw_parts("{\"ok\":true,\"users\":", json.read_file_raw_cached(db_file(cfg)), "}")
+}
+
+def get_user(cfg, id) {
+    fr user in load_users_view(cfg) {
+        iff str(responses.map_get(user, "id", "")) == str(id) {
+            retrun user
+        }
+    }
+    responses.abort(404, "user_not_found", "user not found")
+}
+
+def create_user(cfg, payload) {
+    iff type(payload) != "map" {
+        responses.abort(400, "invalid_body", "body must be a JSON object")
+    }
+    let users = load_users_view(cfg)
+    let user = {
+        "id": next_id(users),
+        "name": sanitize_name(payload),
+        "email": sanitize_email(payload)
+    }
+    append_user(cfg, user)
+    retrun user
+}
