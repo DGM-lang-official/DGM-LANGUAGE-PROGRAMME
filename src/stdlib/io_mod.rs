@@ -1,12 +1,8 @@
-use std::cell::RefCell;
 use std::collections::HashMap;
-use std::fs::File;
-use std::io::Read;
+use std::cell::RefCell;
 use std::rc::Rc;
 use crate::interpreter::DgmValue;
 use crate::error::DgmError;
-
-pub(crate) const DEFAULT_FILE_READ_LIMIT_BYTES: u64 = 10 * 1024 * 1024;
 
 pub fn module() -> HashMap<String, DgmValue> {
     let mut m = HashMap::new();
@@ -21,22 +17,8 @@ pub fn module() -> HashMap<String, DgmValue> {
     m
 }
 
-pub(crate) fn read_text_file_limited(path: &str, context: &str, max_bytes: u64) -> Result<String, DgmError> {
-    let file = File::open(path).map_err(|e| DgmError::RuntimeError { msg: format!("{context}: {}", e) })?;
-    let mut limited = file.take(max_bytes + 1);
-    let mut bytes = Vec::new();
-    limited.read_to_end(&mut bytes).map_err(|e| DgmError::RuntimeError { msg: format!("{context}: {}", e) })?;
-    if bytes.len() as u64 > max_bytes {
-        return Err(DgmError::RuntimeError { msg: format!("{context}: file exceeds {} bytes", max_bytes) });
-    }
-    String::from_utf8(bytes).map_err(|_| DgmError::RuntimeError { msg: format!("{context}: file is not valid UTF-8") })
-}
-
 fn io_read_file(a: Vec<DgmValue>) -> Result<DgmValue, DgmError> {
-    match a.first() {
-        Some(DgmValue::Str(p)) => read_text_file_limited(p, "read_file", DEFAULT_FILE_READ_LIMIT_BYTES).map(DgmValue::Str),
-        _ => Err(DgmError::RuntimeError { msg: "read_file(path) required".into() }),
-    }
+    match a.first() { Some(DgmValue::Str(p)) => std::fs::read_to_string(p).map(DgmValue::Str).map_err(|e| DgmError::RuntimeError { msg: format!("read_file: {}", e) }), _ => Err(DgmError::RuntimeError { msg: "read_file(path) required".into() }) }
 }
 fn io_write_file(a: Vec<DgmValue>) -> Result<DgmValue, DgmError> {
     match (a.get(0), a.get(1)) { (Some(DgmValue::Str(p)), Some(DgmValue::Str(c))) => std::fs::write(p, c).map(|_| DgmValue::Null).map_err(|e| DgmError::RuntimeError { msg: format!("write_file: {}", e) }), _ => Err(DgmError::RuntimeError { msg: "write_file(path, content) required".into() }) }
@@ -72,14 +54,7 @@ fn io_input(a: Vec<DgmValue>) -> Result<DgmValue, DgmError> {
     Ok(DgmValue::Str(line.trim().to_string()))
 }
 fn io_read_lines(a: Vec<DgmValue>) -> Result<DgmValue, DgmError> {
-    match a.first() {
-        Some(DgmValue::Str(p)) => {
-            let content = read_text_file_limited(p, "read_lines", DEFAULT_FILE_READ_LIMIT_BYTES)?;
-            let lines: Vec<DgmValue> = content.lines().map(|l| DgmValue::Str(l.to_string())).collect();
-            Ok(DgmValue::List(Rc::new(RefCell::new(lines))))
-        }
-        _ => Err(DgmError::RuntimeError { msg: "read_lines(path) required".into() }),
-    }
+    match a.first() { Some(DgmValue::Str(p)) => { let content = std::fs::read_to_string(p).map_err(|e| DgmError::RuntimeError { msg: format!("read_lines: {}", e) })?; let lines: Vec<DgmValue> = content.lines().map(|l| DgmValue::Str(l.to_string())).collect(); Ok(DgmValue::List(Rc::new(RefCell::new(lines)))) } _ => Err(DgmError::RuntimeError { msg: "read_lines(path) required".into() }) }
 }
 fn io_file_size(a: Vec<DgmValue>) -> Result<DgmValue, DgmError> {
     match a.first() { Some(DgmValue::Str(p)) => std::fs::metadata(p).map(|m| DgmValue::Int(m.len() as i64)).map_err(|e| DgmError::RuntimeError { msg: format!("file_size: {}", e) }), _ => Err(DgmError::RuntimeError { msg: "file_size(path) required".into() }) }

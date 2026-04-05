@@ -8,13 +8,11 @@ pub mod crypto_mod;
 pub mod regex_mod;
 pub mod net_mod;
 pub mod thread_mod;
-pub mod string_utils;
-pub mod collections;
-pub mod debug_mod;
-pub mod path_mod;
-pub mod config_mod;
-pub mod runtime_mod;
-pub mod log_mod;
+pub mod fs_mod;
+pub mod xml_mod;
+pub mod security;
+#[cfg(test)]
+mod tests;
 
 use std::cell::RefCell;
 use std::rc::Rc;
@@ -32,13 +30,9 @@ pub fn load_module(name: &str) -> Option<DgmValue> {
         "regex" => regex_mod::module(),
         "net" => net_mod::module(),
         "thread" => thread_mod::module(),
-        "strutils" | "string_utils" | "strings" => string_utils::module(),
-        "collections" | "collect" => collections::module(),
-        "debug" | "dbg" => debug_mod::module(),
-        "path" => path_mod::module(),
-        "config" => config_mod::module(),
-        "runtime" | "rt" => runtime_mod::module(),
-        "log" | "logger" => log_mod::module(),
+        "fs" => fs_mod::module(),
+        "xml" => xml_mod::module(),
+        "security" => security::module(),
         _ => return None,
     };
     Some(DgmValue::Map(Rc::new(RefCell::new(map))))

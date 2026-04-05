@@ -7,8 +7,6 @@ pub fn module() -> HashMap<String, DgmValue> {
     let fns: &[(&str, fn(Vec<DgmValue>) -> Result<DgmValue, DgmError>)] = &[
         ("sleep", thread_sleep),
         ("available_cpus", thread_cpus),
-        ("spawn", crate::concurrency::native_spawn),
-        ("channel", crate::concurrency::native_channel),
     ];
     for (name, func) in fns { m.insert(name.to_string(), DgmValue::NativeFunction { name: format!("thread.{}", name), func: *func }); }
     m

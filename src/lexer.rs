@@ -5,14 +5,11 @@ pub struct Lexer {
     source: Vec<char>,
     pos: usize,
     line: usize,
-    column: usize,
-    last_line: usize,
-    last_column: usize,
 }
 
 impl Lexer {
     pub fn new(source: &str) -> Self {
-        Self { source: source.chars().collect(), pos: 0, line: 1, column: 1, last_line: 1, last_column: 1 }
+        Self { source: source.chars().collect(), pos: 0, line: 1 }
     }
 
     pub fn tokenize(&mut self) -> Result<Vec<Token>, DgmError> {
@@ -22,197 +19,148 @@ impl Lexer {
             match ch {
                 ' ' | '\t' | '\r' => { self.advance(); }
                 '\n' => {
-                    let (line, column) = self.position();
+                    tokens.push(Token::new(TokenKind::Newline, "\\n", self.line));
+                    self.line += 1;
                     self.advance();
-                    tokens.push(self.make_token(TokenKind::Newline, "\\n", line, column));
                 }
                 '#' => { while !self.is_at_end() && self.current() != '\n' { self.advance(); } }
-                '(' => { let (line, column) = self.position(); self.advance(); tokens.push(self.make_token(TokenKind::LParen, "(", line, column)); }
-                ')' => { let (line, column) = self.position(); self.advance(); tokens.push(self.make_token(TokenKind::RParen, ")", line, column)); }
-                '{' => { let (line, column) = self.position(); self.advance(); tokens.push(self.make_token(TokenKind::LBrace, "{", line, column)); }
-                '}' => { let (line, column) = self.position(); self.advance(); tokens.push(self.make_token(TokenKind::RBrace, "}", line, column)); }
-                '[' => { let (line, column) = self.position(); self.advance(); tokens.push(self.make_token(TokenKind::LBracket, "[", line, column)); }
-                ']' => { let (line, column) = self.position(); self.advance(); tokens.push(self.make_token(TokenKind::RBracket, "]", line, column)); }
-                ',' => { let (line, column) = self.position(); self.advance(); tokens.push(self.make_token(TokenKind::Comma, ",", line, column)); }
-                ':' => { let (line, column) = self.position(); self.advance(); tokens.push(self.make_token(TokenKind::Colon, ":", line, column)); }
-                ';' => { let (line, column) = self.position(); self.advance(); tokens.push(self.make_token(TokenKind::Semicolon, ";", line, column)); }
-                '?' => {
-                    let (line, column) = self.position();
-                    self.advance();
-                    if !self.is_at_end() && self.current() == '.' {
-                        self.advance();
-                        tokens.push(self.make_token(TokenKind::QuestionDot, "?.", line, column));
-                    } else if !self.is_at_end() && self.current() == '?' {
-                        self.advance();
-                        tokens.push(self.make_token(TokenKind::QuestionQuestion, "??", line, column));
-                    } else {
-                        tokens.push(self.make_token(TokenKind::Question, "?", line, column));
-                    }
-                }
-                '~' => { let (line, column) = self.position(); self.advance(); tokens.push(self.make_token(TokenKind::Tilde, "~", line, column)); }
-                '^' => { let (line, column) = self.position(); self.advance(); tokens.push(self.make_token(TokenKind::Caret, "^", line, column)); }
+                '(' => { tokens.push(Token::new(TokenKind::LParen, "(", self.line)); self.advance(); }
+                ')' => { tokens.push(Token::new(TokenKind::RParen, ")", self.line)); self.advance(); }
+                '{' => { tokens.push(Token::new(TokenKind::LBrace, "{", self.line)); self.advance(); }
+                '}' => { tokens.push(Token::new(TokenKind::RBrace, "}", self.line)); self.advance(); }
+                '[' => { tokens.push(Token::new(TokenKind::LBracket, "[", self.line)); self.advance(); }
+                ']' => { tokens.push(Token::new(TokenKind::RBracket, "]", self.line)); self.advance(); }
+                ',' => { tokens.push(Token::new(TokenKind::Comma, ",", self.line)); self.advance(); }
+                ':' => { tokens.push(Token::new(TokenKind::Colon, ":", self.line)); self.advance(); }
+                ';' => { tokens.push(Token::new(TokenKind::Semicolon, ";", self.line)); self.advance(); }
+                '?' => { tokens.push(Token::new(TokenKind::Question, "?", self.line)); self.advance(); }
+                '~' => { tokens.push(Token::new(TokenKind::Tilde, "~", self.line)); self.advance(); }
+                '^' => { tokens.push(Token::new(TokenKind::Caret, "^", self.line)); self.advance(); }
                 '.' => {
-                    let (line, column) = self.position();
                     self.advance();
                     if !self.is_at_end() && self.current() == '.' {
+                        tokens.push(Token::new(TokenKind::DotDot, "..", self.line));
                         self.advance();
-                        tokens.push(self.make_token(TokenKind::DotDot, "..", line, column));
                     } else {
-                        tokens.push(self.make_token(TokenKind::Dot, ".", line, column));
+                        tokens.push(Token::new(TokenKind::Dot, ".", self.line));
                     }
                 }
                 '&' => {
-                    let (line, column) = self.position();
+                    tokens.push(Token::new(TokenKind::Ampersand, "&", self.line));
                     self.advance();
-                    tokens.push(self.make_token(TokenKind::Ampersand, "&", line, column));
                 }
                 '|' => {
-                    let (line, column) = self.position();
+                    tokens.push(Token::new(TokenKind::Pipe, "|", self.line));
                     self.advance();
-                    tokens.push(self.make_token(TokenKind::Pipe, "|", line, column));
                 }
                 '+' => {
-                    let (line, column) = self.position();
                     self.advance();
                     if !self.is_at_end() && self.current() == '=' {
-                        self.advance();
-                        tokens.push(self.make_token(TokenKind::PlusEq, "+=", line, column));
+                        tokens.push(Token::new(TokenKind::PlusEq, "+=", self.line)); self.advance();
                     } else {
-                        tokens.push(self.make_token(TokenKind::Plus, "+", line, column));
+                        tokens.push(Token::new(TokenKind::Plus, "+", self.line));
                     }
                 }
                 '-' => {
-                    let (line, column) = self.position();
                     self.advance();
                     if !self.is_at_end() && self.current() == '=' {
-                        self.advance();
-                        tokens.push(self.make_token(TokenKind::MinusEq, "-=", line, column));
+                        tokens.push(Token::new(TokenKind::MinusEq, "-=", self.line)); self.advance();
                     } else {
-                        tokens.push(self.make_token(TokenKind::Minus, "-", line, column));
+                        tokens.push(Token::new(TokenKind::Minus, "-", self.line));
                     }
                 }
                 '*' => {
-                    let (line, column) = self.position();
                     self.advance();
                     if !self.is_at_end() && self.current() == '*' {
-                        self.advance();
-                        tokens.push(self.make_token(TokenKind::StarStar, "**", line, column));
+                        tokens.push(Token::new(TokenKind::StarStar, "**", self.line)); self.advance();
                     } else if !self.is_at_end() && self.current() == '=' {
-                        self.advance();
-                        tokens.push(self.make_token(TokenKind::StarEq, "*=", line, column));
+                        tokens.push(Token::new(TokenKind::StarEq, "*=", self.line)); self.advance();
                     } else {
-                        tokens.push(self.make_token(TokenKind::Star, "*", line, column));
+                        tokens.push(Token::new(TokenKind::Star, "*", self.line));
                     }
                 }
                 '/' => {
-                    let (line, column) = self.position();
                     self.advance();
                     if !self.is_at_end() && self.current() == '=' {
-                        self.advance();
-                        tokens.push(self.make_token(TokenKind::SlashEq, "/=", line, column));
+                        tokens.push(Token::new(TokenKind::SlashEq, "/=", self.line)); self.advance();
                     } else {
-                        tokens.push(self.make_token(TokenKind::Slash, "/", line, column));
+                        tokens.push(Token::new(TokenKind::Slash, "/", self.line));
                     }
                 }
                 '%' => {
-                    let (line, column) = self.position();
                     self.advance();
                     if !self.is_at_end() && self.current() == '=' {
-                        self.advance();
-                        tokens.push(self.make_token(TokenKind::PercentEq, "%=", line, column));
+                        tokens.push(Token::new(TokenKind::PercentEq, "%=", self.line)); self.advance();
                     } else {
-                        tokens.push(self.make_token(TokenKind::Percent, "%", line, column));
+                        tokens.push(Token::new(TokenKind::Percent, "%", self.line));
                     }
                 }
                 '=' => {
-                    let (line, column) = self.position();
                     self.advance();
                     if !self.is_at_end() && self.current() == '=' {
-                        self.advance();
-                        tokens.push(self.make_token(TokenKind::EqEq, "==", line, column));
+                        tokens.push(Token::new(TokenKind::EqEq, "==", self.line)); self.advance();
                     } else if !self.is_at_end() && self.current() == '>' {
-                        self.advance();
-                        tokens.push(self.make_token(TokenKind::Arrow, "=>", line, column));
+                        tokens.push(Token::new(TokenKind::Arrow, "=>", self.line)); self.advance();
                     } else {
-                        tokens.push(self.make_token(TokenKind::Eq, "=", line, column));
+                        tokens.push(Token::new(TokenKind::Eq, "=", self.line));
                     }
                 }
                 '!' => {
-                    let (line, column) = self.position();
                     self.advance();
                     if !self.is_at_end() && self.current() == '=' {
-                        self.advance();
-                        tokens.push(self.make_token(TokenKind::BangEq, "!=", line, column));
+                        tokens.push(Token::new(TokenKind::BangEq, "!=", self.line)); self.advance();
                     } else {
-                        tokens.push(self.make_token(TokenKind::Bang, "!", line, column));
+                        tokens.push(Token::new(TokenKind::Bang, "!", self.line));
                     }
                 }
                 '<' => {
-                    let (line, column) = self.position();
                     self.advance();
                     if !self.is_at_end() && self.current() == '=' {
-                        self.advance();
-                        tokens.push(self.make_token(TokenKind::LtEq, "<=", line, column));
+                        tokens.push(Token::new(TokenKind::LtEq, "<=", self.line)); self.advance();
                     } else if !self.is_at_end() && self.current() == '<' {
-                        self.advance();
-                        tokens.push(self.make_token(TokenKind::ShiftLeft, "<<", line, column));
+                        tokens.push(Token::new(TokenKind::ShiftLeft, "<<", self.line)); self.advance();
                     } else {
-                        tokens.push(self.make_token(TokenKind::Lt, "<", line, column));
+                        tokens.push(Token::new(TokenKind::Lt, "<", self.line));
                     }
                 }
                 '>' => {
-                    let (line, column) = self.position();
                     self.advance();
                     if !self.is_at_end() && self.current() == '=' {
-                        self.advance();
-                        tokens.push(self.make_token(TokenKind::GtEq, ">=", line, column));
+                        tokens.push(Token::new(TokenKind::GtEq, ">=", self.line)); self.advance();
                     } else if !self.is_at_end() && self.current() == '>' {
-                        self.advance();
-                        tokens.push(self.make_token(TokenKind::ShiftRight, ">>", line, column));
+                        tokens.push(Token::new(TokenKind::ShiftRight, ">>", self.line)); self.advance();
                     } else {
-                        tokens.push(self.make_token(TokenKind::Gt, ">", line, column));
+                        tokens.push(Token::new(TokenKind::Gt, ">", self.line));
                     }
                 }
-                'f' if self.peek(1) == Some('"') => {
-                    let t = self.lex_fstring(self.peek(2) == Some('"') && self.peek(3) == Some('"'))?;
+                'f' if self.peek_next() == Some('"') => {
+                    let t = self.lex_fstring()?;
                     tokens.extend(t);
                 }
-                '"' => {
-                    let t = self.lex_string(self.peek(1) == Some('"') && self.peek(2) == Some('"'))?;
-                    tokens.push(t);
-                }
+                '"' => { let t = self.lex_string()?; tokens.push(t); }
                 c if c.is_ascii_digit() => { let t = self.lex_number()?; tokens.push(t); }
                 c if c.is_alphabetic() || c == '_' => { let t = self.lex_ident(); tokens.push(t); }
                 other => {
-                    return Err(DgmError::lex(format!("unexpected character '{}'", other), self.line, self.column));
+                    return Err(DgmError::LexError {
+                        msg: format!("unexpected character '{}'", other),
+                        line: self.line,
+                    });
                 }
             }
         }
-        let (line, column) = self.position();
-        tokens.push(Token::new(TokenKind::EOF, "", line, column, line, column));
+        tokens.push(Token::new(TokenKind::EOF, "", self.line));
         Ok(tokens)
     }
 
-    fn lex_string(&mut self, multiline: bool) -> Result<Token, DgmError> {
-        let (line, column) = self.position();
-        self.advance();
-        if multiline {
-            self.advance();
-            self.advance();
-        }
+    fn lex_string(&mut self) -> Result<Token, DgmError> {
+        let line = self.line;
+        self.advance(); // skip opening "
         let mut s = String::new();
-        while !self.is_at_end() {
-            if multiline {
-                if self.current() == '"' && self.peek(1) == Some('"') && self.peek(2) == Some('"') {
-                    break;
-                }
-            } else if self.current() == '"' {
-                break;
-            }
+        while !self.is_at_end() && self.current() != '"' {
             if self.current() == '\\' {
                 self.advance();
                 if self.is_at_end() {
-                    return Err(DgmError::lex("unterminated string escape", line, column));
+                    return Err(DgmError::LexError { msg: "unterminated string escape".into(), line });
                 }
                 match self.current() {
                     'n' => s.push('\n'),
@@ -223,55 +171,36 @@ impl Lexer {
                     '0' => s.push('\0'),
                     other => s.push(other),
                 }
-            } else if self.current() == '\n' {
-                if !multiline {
-                    return Err(DgmError::lex("unterminated string", line, column));
-                }
-                s.push('\n');
             } else {
                 s.push(self.current());
             }
             self.advance();
         }
         if self.is_at_end() {
-            return Err(DgmError::lex("unterminated string", line, column));
+            return Err(DgmError::LexError { msg: "unterminated string".into(), line });
         }
-        self.advance();
-        if multiline {
-            self.advance();
-            self.advance();
-        }
-        Ok(self.make_token(TokenKind::StringLit, s, line, column))
+        self.advance(); // skip closing "
+        Ok(Token::new(TokenKind::StringLit, s, line))
     }
 
-    fn lex_fstring(&mut self, multiline: bool) -> Result<Vec<Token>, DgmError> {
-        let (line, column) = self.position();
-        self.advance();
-        self.advance();
-        if multiline {
-            self.advance();
-            self.advance();
-        }
+    /// Lex f-string: f"hello {expr} world"
+    /// Produces: FStringStart, StringLit, LBrace, <expr tokens>, RBrace, StringLit, ..., RParen
+    fn lex_fstring(&mut self) -> Result<Vec<Token>, DgmError> {
+        let line = self.line;
+        self.advance(); // skip 'f'
+        self.advance(); // skip '"'
         let mut tokens = vec![];
-        tokens.push(Token::new(TokenKind::FStringStart, "f\"", line, column, line, column + 1));
+        tokens.push(Token::new(TokenKind::FStringStart, "f\"", line));
 
         let mut buf = String::new();
-        while !self.is_at_end() {
-            if multiline {
-                if self.current() == '"' && self.peek(1) == Some('"') && self.peek(2) == Some('"') {
-                    break;
-                }
-            } else if self.current() == '"' {
-                break;
-            }
+        while !self.is_at_end() && self.current() != '"' {
             if self.current() == '{' {
-                if !buf.is_empty() {
-                    tokens.push(Token::new(TokenKind::StringLit, buf.clone(), line, column, self.last_line, self.last_column));
-                }
+                // push accumulated string part
+                tokens.push(Token::new(TokenKind::StringLit, buf.clone(), line));
                 buf.clear();
-                let (brace_line, brace_col) = self.position();
-                self.advance();
-                tokens.push(self.make_token(TokenKind::LBrace, "{", brace_line, brace_col));
+                tokens.push(Token::new(TokenKind::LBrace, "{", self.line));
+                self.advance(); // skip '{'
+                // lex tokens inside {} until matching '}'
                 let mut depth = 1;
                 let mut inner_src = String::new();
                 while !self.is_at_end() && depth > 0 {
@@ -283,29 +212,23 @@ impl Lexer {
                     inner_src.push(self.current());
                     self.advance();
                 }
+                // Lex inner expression
                 let mut inner_lexer = Lexer::new(&inner_src);
                 let inner_tokens = inner_lexer.tokenize()?;
+                // push all except EOF
                 for t in inner_tokens {
                     if t.kind != TokenKind::EOF {
-                        tokens.push(Token::new(
-                            t.kind,
-                            t.lexeme,
-                            self.line,
-                            self.column,
-                            self.line,
-                            self.column,
-                        ));
+                        tokens.push(Token { kind: t.kind, lexeme: t.lexeme, line: self.line });
                     }
                 }
                 if !self.is_at_end() && self.current() == '}' {
-                    let (brace_line, brace_col) = self.position();
+                    tokens.push(Token::new(TokenKind::RBrace, "}", self.line));
                     self.advance();
-                    tokens.push(self.make_token(TokenKind::RBrace, "}", brace_line, brace_col));
                 }
             } else if self.current() == '\\' {
                 self.advance();
                 if self.is_at_end() {
-                    return Err(DgmError::lex("unterminated f-string escape", line, column));
+                    return Err(DgmError::LexError { msg: "unterminated f-string escape".into(), line });
                 }
                 match self.current() {
                     'n' => buf.push('\n'),
@@ -317,34 +240,24 @@ impl Lexer {
                     other => buf.push(other),
                 }
                 self.advance();
-            } else if self.current() == '\n' {
-                if !multiline {
-                    return Err(DgmError::lex("unterminated f-string", line, column));
-                }
-                buf.push('\n');
-                self.advance();
             } else {
                 buf.push(self.current());
                 self.advance();
             }
         }
         if !buf.is_empty() {
-            tokens.push(Token::new(TokenKind::StringLit, buf, line, column, self.last_line, self.last_column));
+            tokens.push(Token::new(TokenKind::StringLit, buf, line));
         }
         if self.is_at_end() {
-            return Err(DgmError::lex("unterminated f-string", line, column));
+            return Err(DgmError::LexError { msg: "unterminated f-string".into(), line });
         }
-        self.advance();
-        if multiline {
-            self.advance();
-            self.advance();
-        }
-        tokens.push(Token::new(TokenKind::RParen, ")", line, column, self.last_line, self.last_column));
+        self.advance(); // skip closing "
+        tokens.push(Token::new(TokenKind::RParen, ")", line)); // sentinel for parser
         Ok(tokens)
     }
 
     fn lex_number(&mut self) -> Result<Token, DgmError> {
-        let (line, column) = self.position();
+        let line = self.line;
         let mut s = String::new();
 
         // Hex: 0x...
@@ -355,8 +268,10 @@ impl Lexer {
                 s.push(self.current());
                 self.advance();
             }
-            let val = i64::from_str_radix(&s[2..], 16).map_err(|_| DgmError::lex(format!("invalid hex '{}'", s), line, column))?;
-            return Ok(self.make_token(TokenKind::IntLit, val.to_string(), line, column));
+            let val = i64::from_str_radix(&s[2..], 16).map_err(|_| DgmError::LexError {
+                msg: format!("invalid hex '{}'", s), line
+            })?;
+            return Ok(Token::new(TokenKind::IntLit, val.to_string(), line));
         }
 
         // Binary: 0b...
@@ -367,8 +282,10 @@ impl Lexer {
                 s.push(self.current());
                 self.advance();
             }
-            let val = i64::from_str_radix(&s[2..], 2).map_err(|_| DgmError::lex(format!("invalid binary '{}'", s), line, column))?;
-            return Ok(self.make_token(TokenKind::IntLit, val.to_string(), line, column));
+            let val = i64::from_str_radix(&s[2..], 2).map_err(|_| DgmError::LexError {
+                msg: format!("invalid binary '{}'", s), line
+            })?;
+            return Ok(Token::new(TokenKind::IntLit, val.to_string(), line));
         }
 
         // Octal: 0o...
@@ -379,8 +296,10 @@ impl Lexer {
                 s.push(self.current());
                 self.advance();
             }
-            let val = i64::from_str_radix(&s[2..], 8).map_err(|_| DgmError::lex(format!("invalid octal '{}'", s), line, column))?;
-            return Ok(self.make_token(TokenKind::IntLit, val.to_string(), line, column));
+            let val = i64::from_str_radix(&s[2..], 8).map_err(|_| DgmError::LexError {
+                msg: format!("invalid octal '{}'", s), line
+            })?;
+            return Ok(Token::new(TokenKind::IntLit, val.to_string(), line));
         }
 
         // Decimal
@@ -408,7 +327,7 @@ impl Lexer {
                     self.advance();
                 }
             }
-            Ok(self.make_token(TokenKind::FloatLit, s, line, column))
+            Ok(Token::new(TokenKind::FloatLit, s, line))
         } else {
             // Scientific notation on integer
             if !self.is_at_end() && (self.current() == 'e' || self.current() == 'E') {
@@ -422,76 +341,44 @@ impl Lexer {
                     s.push(self.current());
                     self.advance();
                 }
-                Ok(self.make_token(TokenKind::FloatLit, s, line, column))
+                Ok(Token::new(TokenKind::FloatLit, s, line))
             } else {
-                Ok(self.make_token(TokenKind::IntLit, s, line, column))
+                Ok(Token::new(TokenKind::IntLit, s, line))
             }
         }
     }
 
     fn lex_ident(&mut self) -> Token {
-        let (line, column) = self.position();
+        let line = self.line;
         let mut s = String::new();
         while !self.is_at_end() && (self.current().is_alphanumeric() || self.current() == '_') {
             s.push(self.current());
             self.advance();
         }
         let kind = match s.as_str() {
-            "imprt" | "import" => TokenKind::Imprt,
-            "writ" | "print" => TokenKind::Writ,
-            "def" | "func" | "function" => TokenKind::Def,
-            "retrun" | "return" => TokenKind::Retrun,
-            "iff" | "if" => TokenKind::Iff,
-            "elseif" | "elif" => TokenKind::Elseif,
-            "els" | "else" => TokenKind::Els,
-            "fr" | "for" => TokenKind::Fr,
-            "whl" | "while" => TokenKind::Whl,
-            "brk" | "break" => TokenKind::Brk,
-            "cont" | "continue" => TokenKind::Cont,
-            "tru" | "true" => TokenKind::Tru,
-            "fals" | "false" => TokenKind::Fals,
-            "nul" | "null" => TokenKind::Nul,
-            "let" => TokenKind::Let,
-            "and" => TokenKind::And,
-            "or" => TokenKind::Or,
-            "not" => TokenKind::Not,
-            "cls" | "class" => TokenKind::Cls,
-            "new" => TokenKind::New,
-            "ths" | "this" => TokenKind::Ths,
-            "in" => TokenKind::In,
-            "try" => TokenKind::Try,
-            "ctch" | "catch" => TokenKind::Catch,
-            "finl" | "finally" => TokenKind::Finally,
-            "thro" | "throw" => TokenKind::Throw,
-            "mtch" | "match" => TokenKind::Match,
-            "whn" | "when" => TokenKind::When,
-            "ext" | "extends" => TokenKind::Extends,
-            "lam" | "lambda" | "fn" => TokenKind::Lam,
-            "awt" | "await" => TokenKind::Await,
+            "imprt" => TokenKind::Imprt, "writ" => TokenKind::Writ,
+            "def" => TokenKind::Def, "retrun" => TokenKind::Retrun,
+            "iff" => TokenKind::Iff, "elseif" => TokenKind::Elseif,
+            "els" => TokenKind::Els, "fr" => TokenKind::Fr,
+            "whl" => TokenKind::Whl, "brk" => TokenKind::Brk,
+            "cont" => TokenKind::Cont, "tru" => TokenKind::Tru,
+            "fals" => TokenKind::Fals, "nul" => TokenKind::Nul,
+            "let" => TokenKind::Let, "and" => TokenKind::And,
+            "or" => TokenKind::Or, "not" => TokenKind::Not,
+            "cls" => TokenKind::Cls, "new" => TokenKind::New,
+            "ths" => TokenKind::Ths, "in" => TokenKind::In,
+            // New keywords
+            "try" => TokenKind::Try, "catch" => TokenKind::Catch,
+            "finally" => TokenKind::Finally, "throw" => TokenKind::Throw,
+            "match" => TokenKind::Match, "extends" => TokenKind::Extends,
+            "lam" => TokenKind::Lam,
             _ => TokenKind::Ident,
         };
-        self.make_token(kind, s, line, column)
+        Token::new(kind, s, line)
     }
 
     fn current(&self) -> char { self.source[self.pos] }
-    fn advance(&mut self) {
-        let ch = self.source[self.pos];
-        self.last_line = self.line;
-        self.last_column = self.column;
-        self.pos += 1;
-        if ch == '\n' {
-            self.line += 1;
-            self.column = 1;
-        } else {
-            self.column += 1;
-        }
-    }
+    fn advance(&mut self) { self.pos += 1; }
     fn is_at_end(&self) -> bool { self.pos >= self.source.len() }
     fn peek_next(&self) -> Option<char> { self.source.get(self.pos + 1).copied() }
-    fn peek(&self, offset: usize) -> Option<char> { self.source.get(self.pos + offset).copied() }
-    fn position(&self) -> (usize, usize) { (self.line, self.column) }
-
-    fn make_token(&self, kind: TokenKind, lexeme: impl Into<String>, line: usize, column: usize) -> Token {
-        Token::new(kind, lexeme, line, column, self.last_line, self.last_column)
-    }
 }

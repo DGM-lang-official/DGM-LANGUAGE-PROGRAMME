@@ -1,13 +1,12 @@
 use std::collections::HashMap;
 use crate::interpreter::DgmValue;
 use crate::error::DgmError;
-use crate::interpreter::reserve_string_bytes;
 
 pub fn module() -> HashMap<String, DgmValue> {
     let mut m = HashMap::new();
     let fns: &[(&str, fn(Vec<DgmValue>) -> Result<DgmValue, DgmError>)] = &[
         ("now", time_now), ("now_ms", time_now_ms), ("format", time_format),
-        ("parse", time_parse), ("elapsed", time_elapsed), ("sleep", time_sleep),
+        ("parse", time_parse), ("elapsed", time_elapsed),
     ];
     for (name, func) in fns { m.insert(name.to_string(), DgmValue::NativeFunction { name: format!("time.{}", name), func: *func }); }
     m
@@ -19,9 +18,7 @@ fn time_format(a: Vec<DgmValue>) -> Result<DgmValue, DgmError> {
     match (a.get(0), a.get(1)) {
         (Some(DgmValue::Int(ts)), Some(DgmValue::Str(fmt))) => {
             let dt = Utc.timestamp_opt(*ts, 0).single().ok_or_else(|| DgmError::RuntimeError { msg: "invalid timestamp".into() })?;
-            let out = dt.format(fmt).to_string();
-            reserve_string_bytes(out.len())?;
-            Ok(DgmValue::Str(out))
+            Ok(DgmValue::Str(dt.format(fmt).to_string()))
         }
         _ => Err(DgmError::RuntimeError { msg: "time.format(timestamp, fmt) required".into() }),
     }
@@ -38,15 +35,4 @@ fn time_parse(a: Vec<DgmValue>) -> Result<DgmValue, DgmError> {
 }
 fn time_elapsed(a: Vec<DgmValue>) -> Result<DgmValue, DgmError> {
     match a.first() { Some(DgmValue::Int(start_ms)) => Ok(DgmValue::Int(chrono::Utc::now().timestamp_millis() - start_ms)), _ => Err(DgmError::RuntimeError { msg: "time.elapsed(start_ms) required".into() }) }
-}
-
-fn time_sleep(a: Vec<DgmValue>) -> Result<DgmValue, DgmError> {
-    match a.first() {
-        Some(DgmValue::Int(ms)) if *ms >= 0 => {
-            std::thread::sleep(std::time::Duration::from_millis(*ms as u64));
-            Ok(DgmValue::Null)
-        }
-        Some(DgmValue::Int(_)) => Err(DgmError::RuntimeError { msg: "time.sleep(ms) requires ms >= 0".into() }),
-        _ => Err(DgmError::RuntimeError { msg: "time.sleep(ms) requires int".into() }),
-    }
 }
